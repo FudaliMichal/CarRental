@@ -1,0 +1,13 @@
+.cargrid {
+    display: grid;
+    grid-template-columns: repeat(5, 300px);
+    grid-template-rows: repeat(5, 400px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}

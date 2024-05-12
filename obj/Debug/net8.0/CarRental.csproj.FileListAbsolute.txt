@@ -1,0 +1,232 @@
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.AssemblyInfoInputs.cache
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.AssemblyInfo.cs
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.csproj.CoreCompileInputs.cache
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.sourcelink.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\appsettings.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.staticwebassets.runtime.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.exe
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.deps.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.runtimeconfig.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\CarRental.pdb
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.csproj.AssemblyReference.cache
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.build.CarRental.props
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CarRental.props
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CarRental.props
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\scopedcss\bundle\CarRental.styles.css
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\scopedcss\projectbundle\CarRental.bundle.scp.css
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.csproj.Up2Date
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\refint\CarRental.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.pdb
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\CarRental.genruntimeconfig.cache
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\obj\Debug\net8.0\ref\CarRental.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\testhost.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\testhost.exe
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CoreUtilities.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Users\Jakub\Desktop\Bazy Danych - projekt\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\testhost.exe
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\testhost.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\appsettings.Development.json
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\appsettings.json
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.staticwebassets.runtime.json
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.exe
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.deps.json
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.runtimeconfig.json
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\CarRental.pdb
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CoreUtilities.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\MySqlConnector.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\Newtonsoft.Json.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\Users\Michal\Desktop\CarRental\bin\Debug\net8.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.csproj.AssemblyReference.cache
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.AssemblyInfoInputs.cache
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.AssemblyInfo.cs
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.csproj.CoreCompileInputs.cache
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets.build.json
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets.development.json
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.CarRental.Microsoft.AspNetCore.StaticWebAssets.props
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.build.CarRental.props
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CarRental.props
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CarRental.props
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\staticwebassets.pack.json
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\bundle\CarRental.styles.css
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\projectbundle\CarRental.bundle.scp.css
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.csproj.Up2Date
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.dll
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\refint\CarRental.dll
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.pdb
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\CarRental.genruntimeconfig.cache
+c:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\ref\CarRental.dll
+C:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\Components\Pages\CarRent.razor.rz.scp.css

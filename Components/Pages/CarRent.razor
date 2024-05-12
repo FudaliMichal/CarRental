@@ -1,0 +1,41 @@
+@page "/rent"
+@using CarRental.Models
+@rendermode InteractiveServer
+
+<PageTitle>Car Renting</PageTitle>
+
+<h1>Rent a car of your choice:</h1>
+
+<div class="cargrid">
+    @for (int i = 0; i < 10; i++)
+    {
+        <div class="cell">
+            <img src="@_auto.URL" alt="@_auto.Marka @_auto.Model" />
+            <p>
+                Auto zajete: @_auto.CzyZajety
+            </p>
+        </div>    
+    }
+</div>
+
+@code
+{
+    SamochodModel _auto = new()
+    {
+        URL = "https://images.app.goo.gl/cqDecmqiby4sozrQ6",
+        Marka = "Porsche",
+        Miejsce = 1,
+        Model = "911, 992gen.",
+        CzyZajety = false,
+        RodzajPaliwa = 1,
+        TypAuta = "Sportowe",
+        Id = 0
+    };
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        // Assuming you have a service or method to fetch photo URLs from Google Photos API
+        // _auto.URL = await GooglePhotosService.GetPhotoUrls();
+    }
+}

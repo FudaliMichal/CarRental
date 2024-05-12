@@ -1,0 +1,66 @@
+﻿@page "/Register"
+@using CarRental.Models
+@using MySqlConnector
+@inject IConfiguration Configuration
+
+
+<h1>Register</h1>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red;">@errorMessage</p>
+}
+
+<EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label for="login">Nazwa użytkownika:</label>
+    <InputText id="login" @bind-Value="newUser.Login" />
+    <ValidationMessage For="@(() => newUser.Login)" />
+
+    <button type="submit">Zarejestruj się</button>
+</EditForm>
+
+@code {
+    
+    private string errorMessage;
+    public KontoUzytkownikaModel newUser = new KontoUzytkownikaModel();
+    private async Task RegisterUser()
+
+    {
+
+        try
+        {
+            // Odczytanie connection string z pliku konfiguracyjnego
+            var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+
+            // Tworzenie połączenia z bazą danych MySQL
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                // Otwieranie połączenia
+                await connection.OpenAsync();
+
+                // Tworzenie kwerendy SQL
+                var query = $"INSERT INTO KontoUzytkownika (m) VALUES (Login)";
+
+                // Tworzenie komendy SQL
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    // Dodawanie parametrów do kwerendy
+                    command.Parameters.AddWithValue("@Login", newUser.Login);
+
+                    // Wykonanie kwerendy
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+
+            // Jeśli rejestracja zakończyła się sukcesem, możesz przekierować użytkownika na inną stronę
+            // navigationManager.NavigateTo("/login");
+        }
+        catch (Exception ex)
+        {
+            this.errorMessage = $"Wystąpił błąd podczas rejestracji: {ex.Message}";
+        }
+    }
+}
