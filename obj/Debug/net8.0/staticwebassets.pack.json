@@ -5,6 +5,26 @@
       "PackagePath": "staticwebassets\\CarRental.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\hondacivic10.jpg",
+      "PackagePath": "staticwebassets\\CarImages\\hondacivic10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\mustang.jpg",
+      "PackagePath": "staticwebassets\\CarImages\\mustang.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\porsche911.webp",
+      "PackagePath": "staticwebassets\\CarImages\\porsche911.webp"
+    },
+    {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\superb.png",
+      "PackagePath": "staticwebassets\\CarImages\\superb.png"
+    },
+    {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\touareg.png",
+      "PackagePath": "staticwebassets\\CarImages\\touareg.png"
+    },
+    {
       "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },

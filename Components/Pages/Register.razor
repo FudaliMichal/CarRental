@@ -11,25 +11,30 @@
     <p style="color: red;">@errorMessage</p>
 }
 
+
+
+
 <EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <label for="login">Nazwa użytkownika:</label>
-    <InputText id="login" @bind-Value="newUser.Login" />
+    <InputText ValueExpression="() => _Login" ValueChanged="(value) => _Login = value"></InputText>
     <ValidationMessage For="@(() => newUser.Login)" />
 
     <button type="submit">Zarejestruj się</button>
 </EditForm>
 
 @code {
-    
+
+    private string _Login = String.Empty;
     private string errorMessage;
     public KontoUzytkownikaModel newUser = new KontoUzytkownikaModel();
+    
     private async Task RegisterUser()
-
     {
 
+        newUser.Login = _Login;
         try
         {
             // Odczytanie connection string z pliku konfiguracyjnego
@@ -42,13 +47,13 @@
                 await connection.OpenAsync();
 
                 // Tworzenie kwerendy SQL
-                var query = $"INSERT INTO KontoUzytkownika (m) VALUES (Login)";
+                var query = $"INSERT INTO KontoUzytkownika m VALUES ({newUser.Login})";
 
                 // Tworzenie komendy SQL
                 using (var command = new MySqlCommand(query, connection))
                 {
                     // Dodawanie parametrów do kwerendy
-                    command.Parameters.AddWithValue("@Login", newUser.Login);
+                    // command.Parameters.AddWithValue("@Login", newUser.Login);
 
                     // Wykonanie kwerendy
                     await command.ExecuteNonQueryAsync();

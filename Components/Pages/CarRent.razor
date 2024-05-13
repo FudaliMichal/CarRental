@@ -7,35 +7,126 @@
 <h1>Rent a car of your choice:</h1>
 
 <div class="cargrid">
-    @for (int i = 0; i < 10; i++)
+    @foreach (var car in _carlist)
     {
         <div class="cell">
-            <img src="@_auto.URL" alt="@_auto.Marka @_auto.Model" />
-            <p>
-                Auto zajete: @_auto.CzyZajety
-            </p>
-        </div>    
+            <div class="photo">
+                <img src="@car.PhotoPath" alt="@car.Marka @car.Model" asp-append-version="true"/>
+            </div>
+            <div class="text">@car.Marka @car.Model</div>
+            @if (@car.CzyZajety)
+            {
+                <div class="text">Status: Auto zarezerwowane</div>
+            }
+            else
+            {
+                <div class="text">Status: Auto wolne</div>
+            }
+            <div class="bottombutton">
+                <Button Type="ButtonType.Link" Color="ButtonColor.Primary" Size="Size.Small" To="http://localhost:5091/rezerwacja" @onclick="() => Callback(car)"> Rezerwuj </Button>
+                <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
+            </div>
+        </div>
     }
 </div>
 
+<Offcanvas @ref="_offcanvas">
+    <BodyTemplate>
+        <h3>@_offcanvasTitle</h3>
+
+        <div class="text"></div>
+
+    </BodyTemplate>
+</Offcanvas>
+
 @code
 {
-    SamochodModel _auto = new()
+    private Offcanvas _offcanvas = default!;
+    private string _offcanvasTitle = string.Empty;
+    
+    List<SamochodModel> _carlist = [];
+    SamochodModel _wybrany = new();
+    
+    private async Task OnShowOffcanvasClick(SamochodModel car)
     {
-        URL = "https://images.app.goo.gl/cqDecmqiby4sozrQ6",
+        _offcanvasTitle = $"Szczegóły samochodu: {car.Marka} {car.Model}";
+        await _offcanvas.ShowAsync();
+        
+    }
+    
+    protected override Task OnInitializedAsync()
+    {
+        _carlist.Add(_auto1);
+        _carlist.Add(_auto2);
+        _carlist.Add(_auto3);
+        _carlist.Add(_auto4);
+        _carlist.Add(_auto5);
+        return base.OnInitializedAsync();
+    }
+
+    SamochodModel _auto1 = new()
+    {
+        Id = 0,
         Marka = "Porsche",
-        Miejsce = 1,
-        Model = "911, 992gen.",
+        Model = "911",
+        TypAuta = "Sport",
+        Miejsca = 4,
         CzyZajety = false,
-        RodzajPaliwa = 1,
-        TypAuta = "Sportowe",
-        Id = 0
+        RodzajPaliwa = Paliwo.Bezyna,
+        PhotoPath = "CarImages/porsche911.webp",
     };
     
-    
-    protected override async Task OnInitializedAsync()
+    SamochodModel _auto2 = new()
     {
-        // Assuming you have a service or method to fetch photo URLs from Google Photos API
-        // _auto.URL = await GooglePhotosService.GetPhotoUrls();
+        Id = 1,
+        Marka = "Honda",
+        Model = "Civic",
+        TypAuta = "Hatchback",
+        Miejsca = 5,
+        CzyZajety = true,
+        RodzajPaliwa = Paliwo.Bezyna,
+        PhotoPath = "CarImages/hondacivic10.jpg",
+    };
+    
+    SamochodModel _auto3 = new()
+    {
+        Id = 2,
+        Marka = "Ford",
+        Model = "Mustang",
+        TypAuta = "Sport",
+        Miejsca = 4,
+        CzyZajety = false,
+        RodzajPaliwa = Paliwo.Bezyna,
+        PhotoPath = "CarImages/mustang.jpg",
+    };
+    
+    SamochodModel _auto4 = new()
+    {
+        Id = 3,
+        Marka = "VolksWagen",
+        Model = "Touareg",
+        TypAuta = "SUV",
+        Miejsca = 5,
+        CzyZajety = false,
+        RodzajPaliwa = Paliwo.Diesel,
+        PhotoPath = "CarImages/touareg.png",
+    };
+    
+    SamochodModel _auto5 = new()
+    {
+        Id = 4,
+        Marka = "Skoda",
+        Model = "Superb",
+        TypAuta = "Sedan",
+        Miejsca = 5,
+        CzyZajety = true,
+        RodzajPaliwa = Paliwo.Diesel,
+        PhotoPath = "CarImages/superb.png",
+    };
+
+
+    private void Callback(SamochodModel car)
+    {
+        _wybrany = car;
     }
 }

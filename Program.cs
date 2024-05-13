@@ -1,12 +1,15 @@
 using CarRental.Components;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddBlazorBootstrap();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 var app = builder.Build();
+
+// Add BlazorBootstrap service
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
