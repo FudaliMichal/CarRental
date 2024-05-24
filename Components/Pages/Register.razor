@@ -18,8 +18,14 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <label for="login">Nazwa użytkownika:</label>
-    <InputText ValueExpression="() => _Login" ValueChanged="(value) => _Login = value"></InputText>
+    <p>
+        <label for="login">Nazwa użytkownika:</label>
+        <InputText ValueExpression="() => _Login" ValueChanged="(value) => _Login = value"></InputText>
+    </p>
+    <p>
+        <label for="haslo">Hasło:</label>
+        <InputText type="password" ValueExpression="() => _Haslo" ValueChanged="(value) => _Haslo = value"></InputText>
+    </p>
     <ValidationMessage For="@(() => newUser.Login)" />
 
     <button type="submit">Zarejestruj się</button>
@@ -28,6 +34,8 @@
 @code {
 
     private string _Login = String.Empty;
+    private string _Haslo = String.Empty;
+    private bool _CzyPracownik = false;
     private string errorMessage;
     public KontoUzytkownikaModel newUser = new KontoUzytkownikaModel();
     
@@ -35,6 +43,8 @@
     {
 
         newUser.Login = _Login;
+        newUser.Haslo = _Haslo;
+        newUser.CzyPracownik = _CzyPracownik;
         try
         {
             // Odczytanie connection string z pliku konfiguracyjnego
@@ -47,14 +57,11 @@
                 await connection.OpenAsync();
 
                 // Tworzenie kwerendy SQL
-                var query = $"INSERT INTO KontoUzytkownika m VALUES ({newUser.Login})";
-
+                var query = $"INSERT INTO KontoUzytkownika (Login, Haslo, CzyPracownik) VALUES ('{newUser.Login}','{newUser.Haslo}',{newUser.CzyPracownik})";
+                
                 // Tworzenie komendy SQL
                 using (var command = new MySqlCommand(query, connection))
                 {
-                    // Dodawanie parametrów do kwerendy
-                    // command.Parameters.AddWithValue("@Login", newUser.Login);
-
                     // Wykonanie kwerendy
                     await command.ExecuteNonQueryAsync();
                 }
@@ -68,4 +75,6 @@
             this.errorMessage = $"Wystąpił błąd podczas rejestracji: {ex.Message}";
         }
     }
+    
+    
 }

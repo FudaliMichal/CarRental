@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MFQC5OZ2fJahmLI3x/xAjqfCp7g/DyiAJGA4OjPxM3M=",
+  "Hash": "CiZew2jg2CGeRJ6Q9+SKxU2Q4N8yAKEFs9zMYvOG2Tc=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -338,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\CarImages\\superb.png"
+    },
+    {
+      "Identity": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\supra.png",
+      "SourceId": "CarRental",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\",
+      "BasePath": "_content/CarRental",
+      "RelativePath": "CarImages/supra.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CarImages\\supra.png"
     },
     {
       "Identity": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\touareg.png",

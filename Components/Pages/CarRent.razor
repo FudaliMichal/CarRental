@@ -5,8 +5,12 @@
 <PageTitle>Car Renting</PageTitle>
 
 <h1>Rent a car of your choice:</h1>
+<p>
+    <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
+</p>
 
 <div class="cargrid">
+    
     @foreach (var car in _carlist)
     {
         <div class="cell">
@@ -23,8 +27,13 @@
                 <div class="text">Status: Auto wolne</div>
             }
             <div class="bottombutton">
-                <Button Type="ButtonType.Link" Color="ButtonColor.Primary" Size="Size.Small" To="http://localhost:5091/rezerwacja" @onclick="() => Callback(car)"> Rezerwuj </Button>
+                <Button Type="ButtonType.Link" Color="ButtonColor.Primary" Size="Size.Small" To="http://localhost:5091/rezerwacja"> Rezerwuj </Button>
                 <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
+                
+                @* @if() *@
+                <p>
+                    <Button Color="ButtonColor.Danger" Size="Size.Small" @onclick="() => DelCar(car)"> Usuń </Button>
+                </p>
             </div>
         </div>
     }
@@ -39,13 +48,65 @@
     </BodyTemplate>
 </Offcanvas>
 
+
+<Modal @ref="_modal" Title="@_modalTitle">
+    <BodyTemplate>
+
+        Marka:
+        <p>
+            <InputText ValueExpression="() => _marka" ValueChanged="(value) => _marka = value"></InputText>
+        </p>
+        
+        Model:
+        <p>
+            <InputText ValueExpression="() => _model" ValueChanged="(value) => _model = value"></InputText>
+        </p>
+        
+        Liczba miejsc:
+        <p>
+            <InputNumber TValue="int" ValueExpression="() => _miejsca" ValueChanged="(value) => _miejsca = value"></InputNumber>
+        </p>
+        
+        Typ auta:
+        <p>
+            <InputText ValueExpression="() => _typauta" ValueChanged="(value) => _typauta = value"></InputText>
+        </p>
+        
+        Paliwo (0-Elektryczny, 1-Bezyna, 2-Diesel):
+        <p>
+            <InputNumber TValue="int" ValueExpression="() => _rodzajpaliwa" ValueChanged="(value) => _rodzajpaliwa = value"></InputNumber>
+        </p>
+        
+        Ścieżka do zdjęcia (CarImages/"nazwa pliku".png/jpg):
+        <p>
+            <InputText ValueExpression="() => _path" ValueChanged="(value) => _path = value"></InputText>
+        </p>
+        
+    </BodyTemplate>
+    <FooterTemplate>
+        <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Anuluj</Button>
+        <Button Color="ButtonColor.Primary" @onclick="AddCarCallback">Dodaj samochód</Button>
+    </FooterTemplate>
+</Modal>
+
+
 @code
 {
+    private string _marka;
+    private string _model;
+    private int _miejsca;
+    private string _typauta;
+    private int _rodzajpaliwa;
+    private Paliwo _rodzajpaliwaenum;
+    private string _path;
+    
     private Offcanvas _offcanvas = default!;
     private string _offcanvasTitle = string.Empty;
+
+    private Modal _modal = default!;
+    private string _modalTitle = string.Empty;
     
     List<SamochodModel> _carlist = [];
-    SamochodModel _wybrany = new();
     
     private async Task OnShowOffcanvasClick(SamochodModel car)
     {
@@ -124,9 +185,42 @@
         PhotoPath = "CarImages/superb.png",
     };
 
-
-    private void Callback(SamochodModel car)
+    private void AddNewCar()
     {
-        _wybrany = car;
+        _rodzajpaliwaenum = (Paliwo)_rodzajpaliwa;
+        
+        _carlist.Add(new SamochodModel()
+        {
+            Marka = _marka,
+            Model = _model,
+            TypAuta = _typauta,
+            Miejsca = _miejsca,
+            CzyZajety = false,
+            RodzajPaliwa = _rodzajpaliwaenum,
+            PhotoPath = _path,
+        });
+    }
+    
+    private async Task OnShowModalClick()
+    {
+        _modalTitle = "Wprowadź dane nowego samochodu:";
+        await _modal.ShowAsync();
+    }
+    
+    private async Task OnHideModalClick()
+    {
+        await _modal.HideAsync();
+    }
+    
+    private async Task AddCarCallback()
+    {
+        AddNewCar();
+        await _modal.HideAsync();
+    }
+
+    private async Task DelCar(SamochodModel c)
+    {
+        _carlist.Remove(c);
     }
 }
+
