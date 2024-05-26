@@ -2,7 +2,6 @@ namespace CarRental.Models;
 
 public class WypozyczeniaModel
 {
-    public int Id { get; set; }
     public int IdKlient { get; set; }
     public int IdSamochod { get; set; }
     public DateTime DataOd { get; set; }

@@ -26,7 +26,10 @@
 
 .text {
     text-align: center;
-    
+}
+
+.detail {
+    text-align: left;
 }
 
 .bottombutton {
