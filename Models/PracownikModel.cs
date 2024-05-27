@@ -2,6 +2,7 @@ namespace CarRental.Models;
 
 public class PracownikModel
 {
+    public int IdPracownik { get; set; }
     public int IdKontoUzytkownika { get; set; }
     public string Imie { get; set; }
     public string Nazwisko { get; set; }

@@ -4,12 +4,11 @@
 @using MySqlConnector
 @rendermode InteractiveServer
 @inject IConfiguration Configuration
+@inject NavigationManager Navigation
 
 <PageTitle>Car Renting</PageTitle>
 
 <h1>Wynajmij auto:</h1>
-
-
 
 <p>
     <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
@@ -24,14 +23,8 @@
                 <img src="@car.PhotoPath" alt="@car.Marka @car.Model" asp-append-version="true"/>
             </div>
             <div class="text">@car.Marka @car.Model</div>
-            @if (@car.CzyZajety)
-            {
-                <div class="text">Status: Auto zarezerwowane</div>
-            }
-            else
-            {
-                <div class="text">Status: Auto wolne</div>
-            }
+            <div class="text">Możliwość najmu od: @car.KoniecNajmu</div>
+            
             <div class="bottombutton">
                 <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowRentModalClick(car)"> Rezerwuj </Button>
                 <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
@@ -122,8 +115,6 @@
         <p>
             Wynajmujesz na: @_iloscdni dni - cena wynosi: @_cenazadni zł
         </p>
-        
-
     </BodyTemplate>
     
     <FooterTemplate>
@@ -148,7 +139,6 @@
     private string _path;
     private int _cenadoba;
     private string _koniecnajmu;
-    
     
     private Offcanvas _offcanvas = default!;
     private string _offcanvasTitle = string.Empty;
@@ -199,7 +189,7 @@
             {
                 await connection.OpenAsync();
 
-                var query = "SELECT idSamochod, Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba FROM Samochod";
+                var query = "SELECT idSamochod, Marka, Model, TypAuta, Miejsce, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba FROM Samochod";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -212,7 +202,6 @@
                             var model = reader.GetString("Model");
                             var typAuta = reader.GetString("TypAuta");
                             var miejsce = reader.GetInt32("Miejsce");
-                            var czyZajety = reader.GetBoolean("CzyZajety");
                             var rodzajPaliwa = reader.GetInt32("RodzajPaliwa");
                             var pathZdjecie = reader.GetString("PathZdjecie");
                             var koniecNajmu = reader.GetString("KoniecNajmu");
@@ -228,7 +217,6 @@
                                 Model = model,
                                 TypAuta = typAuta,
                                 Miejsca = miejsce,
-                                CzyZajety = czyZajety,
                                 RodzajPaliwa = _rodzajpaliwaenum,
                                 PhotoPath = pathZdjecie,
                                 KoniecNajmu = koniecNajmu,
@@ -256,7 +244,6 @@
             Model = _model,
             TypAuta = _typauta,
             Miejsca = _miejsca,
-            CzyZajety = false,
             RodzajPaliwa = _rodzajpaliwaenum,
             PhotoPath = _path,
             CenaDoba = _cenadoba,
@@ -271,7 +258,7 @@
             {
                 await connection.OpenAsync();
 
-                var query = $"INSERT INTO Samochod (Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba) VALUES ('{_marka}','{_model}','{_typauta}','{_miejsca}','{0}','{_rodzajpaliwa}','{_path}','{_koniecnajmu}','{_cenadoba}')";
+                var query = $"INSERT INTO Samochod (Marka, Model, TypAuta, Miejsce, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba) VALUES ('{_marka}','{_model}','{_typauta}','{_miejsca}','{_rodzajpaliwa}','{_path}','{_koniecnajmu}','{_cenadoba}')";
             
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -335,7 +322,6 @@
                 {
                     var result = await command.ExecuteNonQueryAsync();
 
-                    // Sprawdzenie, czy rekord został usunięty
                     if (result > 0)
                     {
                         _carlist.Remove(c);
@@ -354,17 +340,47 @@
         }
     }
 
-    private void ConfirmRentCallback()
+    private async Task ConfirmRentCallback()
     {
         if (errorMessage != string.Empty)
         {
             return;
         }
         
-        Console.WriteLine($"Od: {_datefrom}\nDo: {_dateto}");
-        
-        //kod zapisujacy rezerwacje w bazie danych i zmienia status auta oraz koniecnajmu
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var query = $"INSERT INTO Wypozyczenia (idSamochod, dataOd, dataDo, liczbaDni, cena) VALUES ('{_rentcar.Id}','{_datefrom}','{_dateto}','{_iloscdni}','{_cenazadni}')";
+                var updatecar = $"UPDATE Samochod SET KoniecNajmu = '{_dateto}' WHERE idSamochod = {_rentcar.Id}";
+                
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    await command.ExecuteNonQueryAsync();
+                }
+                
+                using (var command2 = new MySqlCommand(updatecar, connection))
+                {
+                    await command2.ExecuteNonQueryAsync();
+                }
+            }
+
+            _rentcar.KoniecNajmu = _dateto.ToString();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas dodawania wypozyczenia: {ex.Message}");
+        }
+
+        await _rentmodal.HideAsync();
+
+        // Console.WriteLine($"Od: {_datefrom}\nDo: {_dateto}");
     }
+        
 
     private async Task DateFromChanged(DateOnly dateOnly)
     {
@@ -374,7 +390,7 @@
         }
 
         _datefrom = dateOnly;
-        Calculate();
+        await Calculate();
     }
 
     private async Task DateToChanged(DateOnly dateOnly)
@@ -385,7 +401,7 @@
         }
 
         _dateto = dateOnly;
-        Calculate();
+        await Calculate();
     }
 
     private async Task Calculate()
@@ -398,7 +414,7 @@
         _iloscdni = difference.Days;
         _cenazadni = _iloscdni * _rentcar.CenaDoba;
 
-        if (_iloscdni < 0 || _datefrom < DateOnly.FromDateTime(DateTime.Today))
+        if (_iloscdni <= 0 || _datefrom < DateOnly.FromDateTime(DateTime.Today) || _datefrom <  DateOnly.Parse(_rentcar.KoniecNajmu))
         {
             _iloscdni = 0;
             _cenazadni = 0;
