@@ -2,6 +2,7 @@
 @using CarRental.Models
 @using MySqlConnector
 @inject IConfiguration Configuration
+@inject NavigationManager NavigationManager
 
 
 <h1>Register</h1>
@@ -13,68 +14,118 @@
 
 
 
-
 <EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
-    <DataAnnotationsValidator />
     <ValidationSummary />
 
     <p>
         <label for="login">Nazwa użytkownika:</label>
-        <InputText ValueExpression="() => _Login" ValueChanged="(value) => _Login = value"></InputText>
+        <InputText type="text" @bind-Value="_Login"></InputText>
+        <ValidationMessage For="@(() => newUser.Login)" />
     </p>
     <p>
-        <label for="haslo">Hasło:</label>
-        <InputText type="password" ValueExpression="() => _Haslo" ValueChanged="(value) => _Haslo = value"></InputText>
+        <label for="password">Hasło:</label>
+        <InputText type="password" @bind-Value="_Haslo"></InputText>
+        <ValidationMessage For="@(() => newUser.Haslo)" />
     </p>
-    <ValidationMessage For="@(() => newUser.Login)" />
+    <p>
+        <label for="password">Powtórz hasło:</label>
+        <InputText type="password" @bind-Value="_Haslo1"></InputText>
+        <ValidationMessage For="@(() => newUser.Haslo)" />
+    </p>
 
-    <button type="submit">Zarejestruj się</button>
+    <p>
+        <label>Kod pracowniczy:</label>
+        <InputText type="text" @bind-Value="kodprac"></InputText>
+    </p>
+    
+    <p>
+        <button type="submit" onclick="refreshPage()">Zarejestruj się</button>
+    </p>
 </EditForm>
 
+@* <EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label for="login">Nazwa użytkownika:</label>
+    <InputText type="text" @bind-Value="_Login"></InputText>
+    <ValidationMessage For="@(() => newUser.Login)" />
+
+    <label for="password">Hasło:</label>
+    <InputText type="password" @bind-Value="_Haslo"></InputText>
+    <ValidationMessage For="@(() => newUser.Haslo)" />
+
+    <button type="submit">Zarejestruj się</button>
+</EditForm> *@
+
 @code {
+    
 
     private string _Login = String.Empty;
     private string _Haslo = String.Empty;
-    private bool _CzyPracownik = false;
+    private string _Haslo1 = String.Empty;
+    private string kodprac = String.Empty;
+    public KontoUzytkownikaModel newUser = new();
     private string errorMessage;
-    public KontoUzytkownikaModel newUser = new KontoUzytkownikaModel();
-    
+
     private async Task RegisterUser()
     {
-
+        if (_Haslo != _Haslo1)
+        {
+            errorMessage = "Hasła nie są takie same.";
+            return;
+        }
+        
+        if (kodprac == "1234")
+        {
+            newUser.CzyPracownik = true;
+        }
+        
         newUser.Login = _Login;
         newUser.Haslo = _Haslo;
-        newUser.CzyPracownik = _CzyPracownik;
+        
+        if (string.IsNullOrEmpty(_Login) || string.IsNullOrEmpty(_Haslo))
+        {
+            errorMessage = "Nazwa użytkownika i Haslo jest wymagane.";
+            return;
+        }
+
+        Console.WriteLine(kodprac);
         try
         {
-            // Odczytanie connection string z pliku konfiguracyjnego
             var connectionString = Configuration.GetConnectionString("MySqlConnection1");
 
-            // Tworzenie połączenia z bazą danych MySQL
             using (var connection = new MySqlConnection(connectionString))
             {
-                // Otwieranie połączenia
                 await connection.OpenAsync();
+           
+                var checkQuery = $"SELECT COUNT(*) FROM KontoUzytkownika WHERE Login = '{newUser.Login}'";
+                using (var checkCommand = new MySqlCommand(checkQuery, connection))
+                {
+                    var existingUserCount = (long)await checkCommand.ExecuteScalarAsync();
+                    if (existingUserCount > 0)
+                    {
+                        errorMessage = "Użytkownik o podanej nazwie już istnieje.";
+                        return;
+                    }
+                }
 
-                // Tworzenie kwerendy SQL
                 var query = $"INSERT INTO KontoUzytkownika (Login, Haslo, CzyPracownik) VALUES ('{newUser.Login}','{newUser.Haslo}',{newUser.CzyPracownik})";
-                
-                // Tworzenie komendy SQL
+
                 using (var command = new MySqlCommand(query, connection))
                 {
-                    // Wykonanie kwerendy
                     await command.ExecuteNonQueryAsync();
                 }
             }
 
             // Jeśli rejestracja zakończyła się sukcesem, możesz przekierować użytkownika na inną stronę
             // navigationManager.NavigateTo("/login");
+            NavigationManager.NavigateTo("/Register", forceLoad: true);
         }
         catch (Exception ex)
         {
             errorMessage = $"Wystąpił błąd podczas rejestracji: {ex.Message}";
         }
     }
-    
-    
+
 }
