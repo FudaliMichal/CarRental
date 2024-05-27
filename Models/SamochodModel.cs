@@ -8,10 +8,12 @@ public class SamochodModel
     public int Miejsca { get; set; }
     public string TypAuta { get; set; }
     public Paliwo RodzajPaliwa { get; set; }
+    public string PhotoPath { get; set; }
     public bool CzyZajety { get; set; }
+    public int CenaDoba { get; set; }
+    public string KoniecNajmu { get; set; }
     
     public int IdKlient { get; set; }
-    public string PhotoPath { get; set; }
 
 }
 

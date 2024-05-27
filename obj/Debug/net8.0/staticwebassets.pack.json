@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\CarImages\\supra.png"
     },
     {
+      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\tesla.png",
+      "PackagePath": "staticwebassets\\CarImages\\tesla.png"
+    },
+    {
       "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\touareg.png",
       "PackagePath": "staticwebassets\\CarImages\\touareg.png"
     },

@@ -35,7 +35,7 @@
 
     <p>
         <label>Kod pracowniczy:</label>
-        <InputText type="text" @bind-Value="kodprac"></InputText>
+        <InputText type="text" @bind-Value="_kodprac"></InputText>
     </p>
     
     <p>
@@ -43,40 +43,23 @@
     </p>
 </EditForm>
 
-@* <EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <label for="login">Nazwa użytkownika:</label>
-    <InputText type="text" @bind-Value="_Login"></InputText>
-    <ValidationMessage For="@(() => newUser.Login)" />
-
-    <label for="password">Hasło:</label>
-    <InputText type="password" @bind-Value="_Haslo"></InputText>
-    <ValidationMessage For="@(() => newUser.Haslo)" />
-
-    <button type="submit">Zarejestruj się</button>
-</EditForm> *@
-
 @code {
-    
-
     private string _Login = String.Empty;
     private string _Haslo = String.Empty;
     private string _Haslo1 = String.Empty;
-    private string kodprac = String.Empty;
+    private string _kodprac = String.Empty;
     public KontoUzytkownikaModel newUser = new();
     private string errorMessage;
 
     private async Task RegisterUser()
     {
-        if (_Haslo != _Haslo1)
+        if (_Haslo1 != _Haslo)
         {
             errorMessage = "Hasła nie są takie same.";
             return;
         }
         
-        if (kodprac == "1234")
+        if (_kodprac == "1234")
         {
             newUser.CzyPracownik = true;
         }
@@ -90,7 +73,7 @@
             return;
         }
 
-        Console.WriteLine(kodprac);
+        Console.WriteLine(_kodprac);
         try
         {
             var connectionString = Configuration.GetConnectionString("MySqlConnection1");

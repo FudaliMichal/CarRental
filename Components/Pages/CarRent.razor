@@ -1,4 +1,5 @@
 @page "/rent"
+@using System.Runtime.InteropServices.JavaScript
 @using CarRental.Models
 @using MySqlConnector
 @rendermode InteractiveServer
@@ -7,6 +8,9 @@
 <PageTitle>Car Renting</PageTitle>
 
 <h1>Wynajmij auto:</h1>
+
+
+
 <p>
     <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
 </p>
@@ -29,7 +33,7 @@
                 <div class="text">Status: Auto wolne</div>
             }
             <div class="bottombutton">
-                <Button Type="ButtonType.Link" Color="ButtonColor.Primary" Size="Size.Small" To="http://localhost:5091/rezerwacja"> Rezerwuj </Button>
+                <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowRentModalClick(car)"> Rezerwuj </Button>
                 <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
                 
                 @* @if() *@
@@ -88,6 +92,11 @@
             <InputText ValueExpression="() => _path" ValueChanged="(value) => _path = value"></InputText>
         </p>
         
+        Cena za dobę (zł)
+        <p>
+            <InputNumber TValue="int" ValueExpression="() => _cenadoba" ValueChanged="(value) => _cenadoba = value"></InputNumber>
+        </p>
+        
     </BodyTemplate>
     <FooterTemplate>
         <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Anuluj</Button>
@@ -95,9 +104,41 @@
     </FooterTemplate>
 </Modal>
 
+<Modal @ref="_rentmodal" Title="@_rentmodalTitle">
+    <BodyTemplate>
+        Auto dostępne od @_rentcar.KoniecNajmu
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+        <p style="color: red;">@errorMessage</p>
+        }
+        
+        <p>
+            Od: <DateInput TValue="DateOnly" Value="_datefrom" ValueExpression="() => _datefrom" ValueChanged="(value) => DateFromChanged(value)" />
+        </p>
+        <p>
+            Do: <DateInput TValue="DateOnly" Value="_dateto" ValueExpression="() => _dateto" ValueChanged="(value) => DateToChanged(value)" />
+        </p>
+        <p>
+            Wynajmujesz na: @_iloscdni dni - cena wynosi: @_cenazadni zł
+        </p>
+        
+
+    </BodyTemplate>
+    
+    <FooterTemplate>
+        <Button Color="ButtonColor.Secondary" @onclick="OnHideRentModalClick">Anuluj</Button>
+        <Button Color="ButtonColor.Primary" @onclick="ConfirmRentCallback">Potwierdź rezerwację</Button>
+    </FooterTemplate>
+</Modal>
 
 @code
 {
+    private DateOnly _datefrom = DateOnly.FromDateTime(DateTime.Today);
+    private DateOnly _dateto = DateOnly.FromDateTime(DateTime.Today);
+    private int _iloscdni;
+    private int _cenazadni;
+    
     private string _marka;
     private string _model;
     private int _miejsca;
@@ -105,6 +146,9 @@
     private int _rodzajpaliwa;
     private Paliwo _rodzajpaliwaenum;
     private string _path;
+    private int _cenadoba;
+    private string _koniecnajmu;
+    
     
     private Offcanvas _offcanvas = default!;
     private string _offcanvasTitle = string.Empty;
@@ -112,6 +156,12 @@
 
     private Modal _modal = default!;
     private string _modalTitle = string.Empty;
+
+    private Modal _rentmodal = default!;
+    private string _rentmodalTitle = string.Empty;
+    private SamochodModel _rentcar = new();
+
+    private string errorMessage = string.Empty;
     
     List<SamochodModel> _carlist = [];
     
@@ -126,6 +176,8 @@
         _Text.Add($"Typ auta: {car.TypAuta}");
         _Text.Add($"Ilość miejsc: {car.Miejsca}");
         _Text.Add($"Rodzaj paliwa: {car.RodzajPaliwa}");
+        _Text.Add($"Cena za dobę: {car.CenaDoba}zł");
+        _Text.Add($"Dostępny od: {car.KoniecNajmu}");
 
         _offcanvasText = _Text;
         
@@ -147,7 +199,7 @@
             {
                 await connection.OpenAsync();
 
-                var query = "SELECT idSamochod, Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie FROM Samochod";
+                var query = "SELECT idSamochod, Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba FROM Samochod";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -163,6 +215,8 @@
                             var czyZajety = reader.GetBoolean("CzyZajety");
                             var rodzajPaliwa = reader.GetInt32("RodzajPaliwa");
                             var pathZdjecie = reader.GetString("PathZdjecie");
+                            var koniecNajmu = reader.GetString("KoniecNajmu");
+                            var cenaDoba = reader.GetInt32("CenaDoba");
 
                             
                             _rodzajpaliwaenum = (Paliwo)rodzajPaliwa;
@@ -177,6 +231,8 @@
                                 CzyZajety = czyZajety,
                                 RodzajPaliwa = _rodzajpaliwaenum,
                                 PhotoPath = pathZdjecie,
+                                KoniecNajmu = koniecNajmu,
+                                CenaDoba = cenaDoba
                             });
                         }
                     }
@@ -192,6 +248,7 @@
     private async Task AddNewCar()
     {
         _rodzajpaliwaenum = (Paliwo)_rodzajpaliwa;
+        _koniecnajmu = DateOnly.FromDateTime(DateTime.Now).ToString();
         
         _carlist.Add(new SamochodModel()
         {
@@ -202,6 +259,8 @@
             CzyZajety = false,
             RodzajPaliwa = _rodzajpaliwaenum,
             PhotoPath = _path,
+            CenaDoba = _cenadoba,
+            KoniecNajmu = _koniecnajmu
         });
         
         try
@@ -212,19 +271,35 @@
             {
                 await connection.OpenAsync();
 
-                var query = $"INSERT INTO Samochod (Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie) VALUES ('{_marka}','{_model}','{_typauta}','{_miejsca}','{0}','{_rodzajpaliwa}','{_path}')";
+                var query = $"INSERT INTO Samochod (Marka, Model, TypAuta, Miejsce, CzyZajety, RodzajPaliwa, PathZdjecie, KoniecNajmu, CenaDoba) VALUES ('{_marka}','{_model}','{_typauta}','{_miejsca}','{0}','{_rodzajpaliwa}','{_path}','{_koniecnajmu}','{_cenadoba}')";
             
                 using (var command = new MySqlCommand(query, connection))
                 {
                     await command.ExecuteNonQueryAsync();
                 }
             }
-
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Wystąpił błąd podczas dodawania samochodu: {ex.Message}");
         }
+    }
+
+    private async Task OnShowRentModalClick(SamochodModel rentcar)
+    {
+        errorMessage = string.Empty;
+        _rentcar = rentcar;
+        _datefrom = DateOnly.Parse(rentcar.KoniecNajmu);
+        _dateto = DateOnly.Parse(rentcar.KoniecNajmu).AddDays(1);
+        await Calculate();
+        
+        _rentmodalTitle = $"Wynajmij: {rentcar.Marka} {rentcar.Model}";
+        await _rentmodal.ShowAsync();
+    }
+
+    private async Task OnHideRentModalClick()
+    {
+        await _rentmodal.HideAsync();
     }
     
     private async Task OnShowModalClick()
@@ -277,6 +352,61 @@
         {
             Console.WriteLine($"Wystąpił błąd podczas usuwania danych: {ex.Message}");
         }
+    }
+
+    private void ConfirmRentCallback()
+    {
+        if (errorMessage != string.Empty)
+        {
+            return;
+        }
+        
+        Console.WriteLine($"Od: {_datefrom}\nDo: {_dateto}");
+        
+        //kod zapisujacy rezerwacje w bazie danych i zmienia status auta oraz koniecnajmu
+    }
+
+    private async Task DateFromChanged(DateOnly dateOnly)
+    {
+        if (dateOnly == _datefrom)
+        {
+            return;
+        }
+
+        _datefrom = dateOnly;
+        Calculate();
+    }
+
+    private async Task DateToChanged(DateOnly dateOnly)
+    {
+        if (dateOnly == _dateto)
+        {
+            return;
+        }
+
+        _dateto = dateOnly;
+        Calculate();
+    }
+
+    private async Task Calculate()
+    {
+        DateTime d1 = DateTime.Parse(_datefrom.ToString());
+        DateTime d2 = DateTime.Parse(_dateto.ToString());
+        
+        TimeSpan difference = d2 - d1;
+
+        _iloscdni = difference.Days;
+        _cenazadni = _iloscdni * _rentcar.CenaDoba;
+
+        if (_iloscdni < 0 || _datefrom < DateOnly.FromDateTime(DateTime.Today))
+        {
+            _iloscdni = 0;
+            _cenazadni = 0;
+            errorMessage = "Podane terminy są nieprawidłowe.";
+            return;
+        }
+        errorMessage = string.Empty;
+        
     }
 }
 
