@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michal\\Desktop\\CarRental\\CarRental.csproj": {}
+    "C:\\Users\\John\\RiderProjects\\CarRental\\CarRental.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michal\\Desktop\\CarRental\\CarRental.csproj": {
+    "C:\\Users\\John\\RiderProjects\\CarRental\\CarRental.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michal\\Desktop\\CarRental\\CarRental.csproj",
+        "projectUniqueName": "C:\\Users\\John\\RiderProjects\\CarRental\\CarRental.csproj",
         "projectName": "CarRental",
-        "projectPath": "C:\\Users\\Michal\\Desktop\\CarRental\\CarRental.csproj",
-        "packagesPath": "C:\\Users\\Michal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michal\\Desktop\\CarRental\\obj\\",
+        "projectPath": "C:\\Users\\John\\RiderProjects\\CarRental\\CarRental.csproj",
+        "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\John\\RiderProjects\\CarRental\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Michal\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -74,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
