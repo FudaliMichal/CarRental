@@ -1,34 +1,64 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\",
+  "WorkspaceRootPath": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\services\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:services\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\pages\\carrent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\carrent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\models\\wypozyczeniamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:models\\wypozyczeniamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\models\\kontouzytkownikamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:models\\kontouzytkownikamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\desktop\\bazy danych - projekt\\carrental\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|c:\\users\\jakub\\source\\repos\\fudalimichal\\carrental\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09FED3FB-0053-4F2C-98F5-2BE7972CA1D6}|CarRental.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +68,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,24 +80,141 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T23:05:15.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T23:04:10.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAADwvygAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T23:03:15.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "KontoUzytkownikaModel.cs",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Models\\KontoUzytkownikaModel.cs",
+              "RelativeDocumentMoniker": "Models\\KontoUzytkownikaModel.cs",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Models\\KontoUzytkownikaModel.cs",
+              "RelativeToolTip": "Models\\KontoUzytkownikaModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T23:01:41.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarRent.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\CarRent.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\CarRent.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\CarRent.razor",
+              "RelativeToolTip": "Components\\Pages\\CarRent.razor",
+              "ViewState": "AQIAAFwBAAAAAAAAAAAAAJQBAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T22:55:10.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WypozyczeniaModel.cs",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Models\\WypozyczeniaModel.cs",
+              "RelativeDocumentMoniker": "Models\\WypozyczeniaModel.cs",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Models\\WypozyczeniaModel.cs",
+              "RelativeToolTip": "Models\\WypozyczeniaModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T23:30:51.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "Components\\Pages\\Login.razor",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADAAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T23:01:19.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CustomAuthenticationStateProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Services\\CustomAuthenticationStateProvider.cs",
+              "RelativeDocumentMoniker": "Services\\CustomAuthenticationStateProvider.cs",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Services\\CustomAuthenticationStateProvider.cs",
+              "RelativeToolTip": "Services\\CustomAuthenticationStateProvider.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T22:59:54.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Register.razor",
-              "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Register.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Register.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Register.razor",
-              "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Register.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Register.razor",
               "RelativeToolTip": "Components\\Pages\\Register.razor",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAACQAAAAAAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAGMAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-25T07:49:05.309Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAACEAAAAAAAAAAADwvyEAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-25T08:41:26.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Error.razor",
-              "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Error.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Error.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Error.razor",
-              "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Error.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Error.razor",
               "RelativeToolTip": "Components\\Pages\\Error.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -75,11 +222,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Home.razor",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\Components\\Pages\\Home.razor",
               "RelativeToolTip": "Components\\Pages\\Home.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -87,51 +234,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Jakub\\source\\repos\\FudaliMichal\\CarRental\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-25T07:46:43.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Weather.razor",
               "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Weather.razor",
-              "RelativeDocumentMoniker": "Components\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Weather.razor",
               "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Weather.razor",
-              "RelativeToolTip": "Components\\Pages\\Weather.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Weather.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-25T08:58:46.951Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-25T08:41:26.822Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "Counter.razor",
               "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Counter.razor",
-              "RelativeDocumentMoniker": "Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Counter.razor",
               "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Counter.razor",
-              "RelativeToolTip": "Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Bazy Danych - projekt\\CarRental\\Components\\Pages\\Counter.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-25T08:58:53.076Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Jakub\\Desktop\\Bazy Danych - projekt\\CarRental\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-25T07:46:43.151Z"
             }
           ]
         }

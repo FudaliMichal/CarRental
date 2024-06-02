@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject CustomAuthenticationStateProvider CustomAuthStateProvider
 
 <div class="page">
     <div class="sidebar">
@@ -7,6 +10,15 @@
 
     <main>
         <div class="top-row px-4">
+            @if (authenticationState != null && authenticationState.User.Identity.IsAuthenticated)
+            {
+                <p>Hello, @authenticationState.User.Identity.Name!</p>
+                <button class="btn btn-primary" @onclick="Logout">Wyloguj się</button>
+            }
+            else
+            {
+                <p>Nie jesteś zalogowany!</p>
+            }
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
 
@@ -21,3 +33,17 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private AuthenticationState authenticationState;
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    }
+
+    private async Task Logout()
+    {
+        await CustomAuthStateProvider.LogoutAsync();
+    }
+}
