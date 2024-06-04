@@ -7,19 +7,58 @@
 
 <PageTitle>Car Renting</PageTitle>
 
-<h1>Wynajmij auto:</h1>
+<h1>
+    Wynajmij auto:
+    <Button Color="ButtonColor.Success" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
+</h1>
+
 
 <p>
-    <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
+    Segment samochodu
+    <Dropdown>
+        <DropdownToggleButton Color="ButtonColor.Secondary">@Rodzajdropdowntext</DropdownToggleButton>
+        <DropdownMenu>
+            @foreach (var t in _listatypow)
+            {
+            <DropdownItem Type="ButtonType.Button" @onclick="() => _filterrodzajauta = t">@t</DropdownItem>
+            }
+        </DropdownMenu>
+    </Dropdown>
 </p>
 
 <p>
-    Filtruj samochody:
+    Ilość miejsc
+    <Dropdown>
+        <DropdownToggleButton Color="ButtonColor.Secondary">@Miejscadropdowntext</DropdownToggleButton>
+        <DropdownMenu>
+            @foreach (var m in _listamiejsc)
+            {
+                <DropdownItem Type="ButtonType.Button" @onclick="() => _filteriloscmiejsc = m">@m</DropdownItem>
+            }
+        </DropdownMenu>
+    </Dropdown>
+</p>
+
+<p>
+    Rodzaj paliwa
+    <Dropdown>
+        <DropdownToggleButton Color="ButtonColor.Secondary">@Paliwodropdowntext</DropdownToggleButton>
+        <DropdownMenu>
+            <DropdownItem Type="ButtonType.Button" @onclick="() => _filterpaliwo = 0">Elektryczny</DropdownItem>
+            <DropdownItem Type="ButtonType.Button" @onclick="() => _filterpaliwo = 1">Benzyna</DropdownItem>
+            <DropdownItem Type="ButtonType.Button" @onclick="() => _filterpaliwo = 2">Diesel</DropdownItem>
+        </DropdownMenu>
+    </Dropdown>
+</p>
+
+<p>
+    <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="AddMatchingCarsToList"> Filtruj </Button>
+    <Button Color="ButtonColor.Info" Size="Size.Small" @onclick="ResetFilter"> Usuń filtry </Button>
 </p>
 
 <div class="cargrid">
     
-    @foreach (var car in _carlist)
+    @foreach (var car in _filteredlist)
     {
         <div class="cell">
             <div class="photo">
@@ -128,6 +167,17 @@
 
 @code
 {
+    private string Rodzajdropdowntext => _filterrodzajauta == string.Empty ? "Wybierz typ samochodu" : _filterrodzajauta;
+    private string Miejscadropdowntext => _filteriloscmiejsc is null ? "Wybierz ilość miejsc" : _filteriloscmiejsc.ToString();
+    private string Paliwodropdowntext => _filterpaliwo is null ? "Wybierz rodzaj paliwa" : ((Paliwo)_filterpaliwo).ToString();
+    private List<int> _listamiejsc = [];
+    private List<string> _listatypow = [];
+    
+    private string _filterrodzajauta = string.Empty;
+    private int? _filteriloscmiejsc;
+    private int? _filterpaliwo;
+    private List<SamochodModel> _filteredlist = [];
+    
     private DateOnly _datefrom = DateOnly.FromDateTime(DateTime.Today);
     private DateOnly _dateto = DateOnly.FromDateTime(DateTime.Today);
     private int _iloscdni;
@@ -180,6 +230,7 @@
     protected override async Task OnInitializedAsync()
     {
         await ReadAllFromDb();
+        _filteredlist.AddRange(_carlist);
     }
 
     private async Task ReadAllFromDb()
@@ -225,6 +276,16 @@
                                 KoniecNajmu = koniecNajmu,
                                 CenaDoba = cenaDoba
                             });
+
+                            if (!_listamiejsc.Contains(miejsce))
+                            {
+                                _listamiejsc.Add(miejsce);
+                            }
+                            
+                            if (!_listatypow.Contains(typAuta))
+                            {
+                                _listatypow.Add(typAuta);
+                            }
                         }
                     }
                 }
@@ -241,7 +302,7 @@
         _rodzajpaliwaenum = (Paliwo)_rodzajpaliwa;
         _koniecnajmu = DateOnly.FromDateTime(DateTime.Now).ToString();
         
-        _carlist.Add(new SamochodModel()
+        var newcar = new SamochodModel()
         {
             Marka = _marka,
             Model = _model,
@@ -251,7 +312,10 @@
             PhotoPath = _path,
             CenaDoba = _cenadoba,
             KoniecNajmu = _koniecnajmu
-        });
+        };
+        
+        _carlist.Add(newcar);
+        _filteredlist.Add(newcar);
         
         try
         {
@@ -328,6 +392,7 @@
                     if (result > 0)
                     {
                         _carlist.Remove(c);
+                        _filteredlist.Remove(c);
                         Console.WriteLine("Samochód został usunięty z bazy danych.");
                     }
                     else
@@ -426,6 +491,32 @@
         }
         errorMessage = string.Empty;
         
+    }
+
+    private void ResetFilter()
+    {
+        // _filteriloscmiejsc = null;
+        // _filterpaliwo = null;
+        // _filterrodzajauta = string.Empty;
+        
+        _filteredlist.Clear();
+        _filteredlist.AddRange(_carlist);
+    }
+
+    private void AddMatchingCarsToList()
+    {
+        _filteredlist.Clear();
+        
+        var filteredCars = _carlist.Where(x =>
+        {
+            var paliwo = _filterpaliwo is null || x.RodzajPaliwa == (Paliwo)_filterpaliwo;
+            var miejsca = _filteriloscmiejsc is null || x.Miejsca == _filteriloscmiejsc;
+            var rodzaj = _filterrodzajauta == string.Empty || x.TypAuta == _filterrodzajauta;
+
+            return paliwo && miejsca && rodzaj;
+        });
+
+        _filteredlist.AddRange(filteredCars);
     }
 }
 

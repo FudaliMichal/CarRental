@@ -1,8 +1,16 @@
+using System.Net;
 using CarRental.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 var builder = WebApplication.CreateBuilder(args);
+// builder.WebHost.UseKestrel(options =>
+//     {
+//         options.Listen(IPAddress.Any, 5091, listenOptions =>
+//             {
+//                 listenOptions.UseHttps();
+//             });
+//     });
 builder.Services.AddBlazorBootstrap();
 
 // Add services to the container.
