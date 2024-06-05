@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using CarRental.Models;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {

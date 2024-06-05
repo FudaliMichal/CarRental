@@ -1,6 +1,10 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager Navigation
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">CarRental</a>
+            <a class="navbar-brand">CarRental</a>
     </div>
 </div>
 
@@ -8,35 +12,38 @@
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Strona startowa
-            </NavLink>
-        </div>
+
+        @if (_auth?.User?.Claims?.Count() != 0)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="homepage" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Strona startowa
+                </NavLink>
+            </div>
+        }
+        
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="rent">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Wypożyczanie
             </NavLink>
         </div>
-        
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="register">
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Rejestracja
             </NavLink>
         </div>
-        
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="login">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Zaloguj się
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="reservations">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Moje rezerwacje
-            </NavLink>
-        </div>
     </nav>
 </div>
 
+@code
+{
+    private AuthenticationState _auth;
+    private bool _isUserEmployee;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _auth = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    }
+}

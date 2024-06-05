@@ -470,3 +470,4 @@ C:\Users\John\RiderProjects\CarRental\obj\Debug\net8.0\CarRental.genruntimeconfi
 C:\Users\John\RiderProjects\CarRental\obj\Debug\net8.0\ref\CarRental.dll
 C:\Users\John\RiderProjects\CarRental\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
 C:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
+C:\Users\Michal\Desktop\CarRental\obj\Debug\net8.0\scopedcss\Components\Pages\HomePage.razor.rz.scp.css

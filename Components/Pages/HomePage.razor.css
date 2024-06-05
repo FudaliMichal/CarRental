@@ -1,0 +1,41 @@
+.button-style {
+    color: inherit;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.button-style:hover {
+    background-color: #e2e6ea;
+}
+
+.button-text {
+    margin: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.rounded {
+    border-radius: 10px !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.fixed-width {
+    width: 250px;
+}

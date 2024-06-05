@@ -285,3 +285,45 @@ main[b-6vrjrk681f] {
 .fixed-width[b-743qage0nk] {
     width: 250px;
 }
+/* _content/CarRental/Components/Pages/HomePage.razor.rz.scp.css */
+.button-style[b-x4qxdwlkam] {
+    color: inherit;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.button-style:hover[b-x4qxdwlkam] {
+    background-color: #e2e6ea;
+}
+
+.button-text[b-x4qxdwlkam] {
+    margin: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.photo img[b-x4qxdwlkam] {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.rounded[b-x4qxdwlkam] {
+    border-radius: 10px !important;
+}
+
+.text-center[b-x4qxdwlkam] {
+    text-align: center !important;
+}
+
+.py-5[b-x4qxdwlkam] {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.fixed-width[b-x4qxdwlkam] {
+    width: 250px;
+}

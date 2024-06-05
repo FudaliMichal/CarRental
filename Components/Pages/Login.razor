@@ -15,15 +15,19 @@
 <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
     <ValidationSummary />
 
-    <label for="username">Username:</label>
-    <InputText id="username" @bind-Value="loginModel.Login" />
-    <ValidationMessage For="@(() => loginModel.Login)" />
+    <p>
+        <label for="username">Nazwa użytkownika:</label>
+        <InputText id="username" @bind-Value="loginModel.Login" />
+        <ValidationMessage For="@(() => loginModel.Login)" />
+    </p>
 
-    <label for="password">Password:</label>
-    <InputText id="password" type="password" @bind-Value="loginModel.Haslo" />
-    <ValidationMessage For="@(() => loginModel.Haslo)" />
+    <p>
+        <label for="password">Hasło:</label>
+        <InputText id="password" type="password" @bind-Value="loginModel.Haslo" />
+        <ValidationMessage For="@(() => loginModel.Haslo)" />
+    </p>
 
-    <button type="submit">Login</button>
+    <button type="submit">Zaloguj się</button>
 </EditForm>
 
 @code {
@@ -61,7 +65,7 @@
                                 };
 
                             await AuthenticationStateProvider.LoginAsync(userSession);
-                            NavigationManager.NavigateTo("/");
+                            NavigationManager.NavigateTo("/homepage", true);
                         }
                         else
                         {

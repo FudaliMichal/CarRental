@@ -1,6 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
 @inject CustomAuthenticationStateProvider CustomAuthStateProvider
+@inject NavigationManager NavigationManager
+
 
 <div class="page">
     <div class="sidebar">
@@ -11,12 +13,12 @@
         <div class="top-row px-4">
             @if (authenticationState != null && authenticationState.User.Identity.IsAuthenticated)
             {
-                <p>Hello, @authenticationState.User.Identity.Name!</p>
-                <button class="btn btn-primary" @onclick="Logout">Wyloguj się</button>
+                <a>Witaj @authenticationState.User.Identity.Name!</a>
+                <button class="btn btn-primary" style="margin-left: 10px" @onclick="Logout">Wyloguj się</button>
             }
             else
             {
-                <p>Nie jesteś zalogowany!</p>
+                <a href="/login">Zaloguj</a>
             }
         </div>
 
@@ -44,5 +46,6 @@
     private async Task Logout()
     {
         await CustomAuthStateProvider.LogoutAsync();
+        NavigationManager.NavigateTo("/", true);
     }
 }
