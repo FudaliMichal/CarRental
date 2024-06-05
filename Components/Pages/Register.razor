@@ -4,50 +4,112 @@
 @inject IConfiguration Configuration
 @inject NavigationManager NavigationManager
 
-
-<h1>Register</h1>
-
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <p style="color: red;">@errorMessage</p>
-}
+<h1>Zarejestruj się</h1>
 
 
 
 <EditForm Model="newUser" OnValidSubmit="RegisterUser" FormName="registrationForm">
     <ValidationSummary />
 
+    <label for="login">Nazwa użytkownika:</label>
     <p>
-        <label for="login">Nazwa użytkownika:</label>
         <InputText type="text" @bind-Value="_Login"></InputText>
         <ValidationMessage For="@(() => newUser.Login)" />
     </p>
+    
+    <label for="password">Hasło:</label>
     <p>
-        <label for="password">Hasło:</label>
         <InputText type="password" @bind-Value="_Haslo"></InputText>
         <ValidationMessage For="@(() => newUser.Haslo)" />
     </p>
+
+    <label for="password">Powtórz hasło:</label>
     <p>
-        <label for="password">Powtórz hasło:</label>
         <InputText type="password" @bind-Value="_Haslo1"></InputText>
         <ValidationMessage For="@(() => newUser.Haslo)" />
     </p>
 
+    <label>Kod pracowniczy:</label>
     <p>
-        <label>Kod pracowniczy:</label>
         <InputText type="text" @bind-Value="_kodprac"></InputText>
     </p>
+
+    <p>---------------------------------------------------------</p>
+    
+    <label>Imię:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Imie"></InputText>
+    </p>
+    
+    <label>Nazwisko:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Nazwisko"></InputText>
+    </p>
+    
+    <label>Adres mailowy:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Mail"></InputText>
+    </p>
+    
+    <p>---------------------------------------------------------</p>
+    
+    <label>Kraj:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Kraj"></InputText>
+    </p>
+  
+    <label>Miasto:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Miasto"></InputText>
+    </p>
+  
+    <label>Ulica:</label>
+    <p>
+        <InputText type="text" @bind-Value="_Ulica"></InputText>
+    </p>
+  
+    <label>Numer domu:</label>
+    <p>
+        <InputText type="text" @bind-Value="_NrDomu"></InputText>
+    </p>
+  
+    <label>Numer mieszkania (opcjonalne):</label>
+    <p>
+        <InputText type="text" @bind-Value="_NrMieszkania"></InputText>
+    </p>
+    
+    <p>---------------------------------------------------------</p>
+    
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+    <p style="color: red;">@errorMessage</p>
+    }
     
     <p>
         <button type="submit" onclick="refreshPage()">Zarejestruj się</button>
     </p>
+
 </EditForm>
 
 @code {
-    private string _Login = String.Empty;
-    private string _Haslo = String.Empty;
-    private string _Haslo1 = String.Empty;
-    private string _kodprac = String.Empty;
+    private int _idKontoUzytkownika;
+    private int _idAdres;
+    
+    private string _Login = string.Empty;
+    private string _Haslo = string.Empty;
+    private string _Haslo1 = string.Empty;
+    private string _kodprac = string.Empty;
+    
+    private string _Imie = string.Empty;
+    private string _Nazwisko = string.Empty;
+    private string _Mail = string.Empty;
+    
+    private string _Miasto = string.Empty;
+    private string _Ulica = string.Empty;
+    private string _Kraj = string.Empty;
+    private string _NrDomu = string.Empty;
+    private string _NrMieszkania = string.Empty;
+
     public KontoUzytkownikaModel newUser = new();
     private string errorMessage;
 
@@ -58,22 +120,29 @@
             errorMessage = "Hasła nie są takie same.";
             return;
         }
-        
+
         if (_kodprac == "1234")
         {
             newUser.CzyPracownik = true;
         }
-        
+
         newUser.Login = _Login;
         newUser.Haslo = _Haslo;
-        
-        if (string.IsNullOrEmpty(_Login) || string.IsNullOrEmpty(_Haslo))
+
+        if (string.IsNullOrEmpty(_Login)
+            || string.IsNullOrEmpty(_Haslo)
+            || string.IsNullOrEmpty(_Imie)
+            || string.IsNullOrEmpty(_Nazwisko)
+            || string.IsNullOrEmpty(_Mail)
+            || string.IsNullOrEmpty(_Miasto)
+            || string.IsNullOrEmpty(_Ulica)
+            || string.IsNullOrEmpty(_Kraj)
+            || string.IsNullOrEmpty(_NrDomu))
         {
-            errorMessage = "Nazwa użytkownika i Haslo jest wymagane.";
+            errorMessage = "Uzupełnij wymagane pola.";
             return;
         }
 
-        Console.WriteLine(_kodprac);
         try
         {
             var connectionString = Configuration.GetConnectionString("MySqlConnection1");
@@ -81,10 +150,12 @@
             using (var connection = new MySqlConnection(connectionString))
             {
                 await connection.OpenAsync();
-           
-                var checkQuery = $"SELECT COUNT(*) FROM KontoUzytkownika WHERE Login = '{newUser.Login}'";
+
+                // Check if user already exists
+                var checkQuery = "SELECT COUNT(*) FROM KontoUzytkownika WHERE Login = @login";
                 using (var checkCommand = new MySqlCommand(checkQuery, connection))
                 {
+                    checkCommand.Parameters.AddWithValue("@login", newUser.Login);
                     var existingUserCount = (long)await checkCommand.ExecuteScalarAsync();
                     if (existingUserCount > 0)
                     {
@@ -93,16 +164,75 @@
                     }
                 }
 
-                var query = $"INSERT INTO KontoUzytkownika (Login, Haslo, CzyPracownik) VALUES ('{newUser.Login}','{newUser.Haslo}',{newUser.CzyPracownik})";
-
-                using (var command = new MySqlCommand(query, connection))
+                // Insert new user
+                var insertUserQuery = "INSERT INTO KontoUzytkownika (Login, Haslo, CzyPracownik) VALUES (@login, @haslo, @czyPracownik)";
+                using (var insertUserCommand = new MySqlCommand(insertUserQuery, connection))
                 {
-                    await command.ExecuteNonQueryAsync();
+                    insertUserCommand.Parameters.AddWithValue("@login", newUser.Login);
+                    insertUserCommand.Parameters.AddWithValue("@haslo", newUser.Haslo);
+                    insertUserCommand.Parameters.AddWithValue("@czyPracownik", newUser.CzyPracownik);
+                    await insertUserCommand.ExecuteNonQueryAsync();
+                }
+
+                // Retrieve the new user's ID
+                var selectUserIdQuery = "SELECT idKontoUzytkownika FROM KontoUzytkownika WHERE Login = @login AND Haslo = @haslo";
+                using (var selectUserIdCommand = new MySqlCommand(selectUserIdQuery, connection))
+                {
+                    selectUserIdCommand.Parameters.AddWithValue("@login", _Login);
+                    selectUserIdCommand.Parameters.AddWithValue("@haslo", _Haslo);
+                    using (var reader = await selectUserIdCommand.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            _idKontoUzytkownika = reader.GetInt32("idKontoUzytkownika");
+                            Console.WriteLine($"Found idKontoUzytkownika: {_idKontoUzytkownika}");
+                        }
+                    }
+                }
+
+                // Insert address
+                var insertAddressQuery = "INSERT INTO Adres (Miasto, Ulica, Kraj, NrDomu, NrMieszkania) VALUES (@miasto, @ulica, @kraj, @nrDomu, @nrMieszkania)";
+                using (var insertAddressCommand = new MySqlCommand(insertAddressQuery, connection))
+                {
+                    insertAddressCommand.Parameters.AddWithValue("@miasto", _Miasto);
+                    insertAddressCommand.Parameters.AddWithValue("@ulica", _Ulica);
+                    insertAddressCommand.Parameters.AddWithValue("@kraj", _Kraj);
+                    insertAddressCommand.Parameters.AddWithValue("@nrDomu", _NrDomu);
+                    insertAddressCommand.Parameters.AddWithValue("@nrMieszkania", _NrMieszkania);
+                    await insertAddressCommand.ExecuteNonQueryAsync();
+                }
+
+                // Retrieve the new address's ID
+                var selectAddressIdQuery = "SELECT idAdres FROM Adres WHERE Miasto = @miasto AND Ulica = @ulica AND Kraj = @kraj AND NrDomu = @nrDomu";
+                using (var selectAddressIdCommand = new MySqlCommand(selectAddressIdQuery, connection))
+                {
+                    selectAddressIdCommand.Parameters.AddWithValue("@miasto", _Miasto);
+                    selectAddressIdCommand.Parameters.AddWithValue("@ulica", _Ulica);
+                    selectAddressIdCommand.Parameters.AddWithValue("@kraj", _Kraj);
+                    selectAddressIdCommand.Parameters.AddWithValue("@nrDomu", _NrDomu);
+                    using (var reader = await selectAddressIdCommand.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            _idAdres = reader.GetInt32("idAdres");
+                            Console.WriteLine($"Found idAdres: {_idAdres}");
+                        }
+                    }
+                }
+
+                // Insert client
+                var insertClientQuery = "INSERT INTO Klient (idKontoUzytkownika, Imie, Nazwisko, Mail, idAdres) VALUES (@idKontoUzytkownika, @imie, @nazwisko, @mail, @idAdres)";
+                using (var insertClientCommand = new MySqlCommand(insertClientQuery, connection))
+                {
+                    insertClientCommand.Parameters.AddWithValue("@idKontoUzytkownika", _idKontoUzytkownika);
+                    insertClientCommand.Parameters.AddWithValue("@imie", _Imie);
+                    insertClientCommand.Parameters.AddWithValue("@nazwisko", _Nazwisko);
+                    insertClientCommand.Parameters.AddWithValue("@mail", _Mail);
+                    insertClientCommand.Parameters.AddWithValue("@idAdres", _idAdres);
+                    await insertClientCommand.ExecuteNonQueryAsync();
                 }
             }
 
-            // Jeśli rejestracja zakończyła się sukcesem, możesz przekierować użytkownika na inną stronę
-            // navigationManager.NavigateTo("/login");
             NavigationManager.NavigateTo("/Register", forceLoad: true);
         }
         catch (Exception ex)
@@ -110,5 +240,7 @@
             errorMessage = $"Wystąpił błąd podczas rejestracji: {ex.Message}";
         }
     }
+
+
 
 }

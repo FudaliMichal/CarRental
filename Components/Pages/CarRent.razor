@@ -1,4 +1,5 @@
 @page "/rent"
+@using System.Security.Claims
 @using CarRental.Models
 @using Microsoft.AspNetCore.Components.Authorization
 @using MySqlConnector
@@ -174,6 +175,8 @@
 {
     private AuthenticationState _auth;
     private bool _isUserEmployee;
+    private int IdKlient;
+
     
     private string Rodzajdropdowntext => _filterrodzajauta == string.Empty ? "Typ samochodu" : _filterrodzajauta;
     private string Miejscadropdowntext => _filteriloscmiejsc is null ? "Ilość miejsc" : _filteriloscmiejsc.ToString();
@@ -430,12 +433,32 @@
         try
         {
             var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+            
 
             using (var connection = new MySqlConnection(connectionString))
             {
                 await connection.OpenAsync();
 
-                var query = $"INSERT INTO Wypozyczenia (idSamochod, dataOd, dataDo, liczbaDni, cena) VALUES ('{_rentcar.Id}','{_datefrom}','{_dateto}','{_iloscdni}','{_cenazadni}')";
+                
+                var IdKonto = _auth.User.ReturnClaimState(ClaimTypes.NameIdentifier);
+
+                var znajdzklienta = "SELECT idKlient FROM Klient WHERE idKontoUzytkownika = @idkonto";
+                using (var znajdzklientacommand = new MySqlCommand(znajdzklienta, connection))
+                {
+                    znajdzklientacommand.Parameters.AddWithValue("@idkonto",IdKonto);
+                    using (var reader = await znajdzklientacommand.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            IdKlient = reader.GetInt32("idKlient");
+                        }
+                    }
+                }
+
+                // Console.WriteLine(IdKonto);
+                // Console.WriteLine(IdKlient);
+                
+                var query = $"INSERT INTO Wypozyczenia (idSamochod, dataOd, dataDo, liczbaDni, cena, idKlient) VALUES ('{_rentcar.Id}','{_datefrom}','{_dateto}','{_iloscdni}','{_cenazadni}','{IdKlient}')";
                 var updatecar = $"UPDATE Samochod SET KoniecNajmu = '{_dateto}' WHERE idSamochod = {_rentcar.Id}";
                 
                 using (var command = new MySqlCommand(query, connection))

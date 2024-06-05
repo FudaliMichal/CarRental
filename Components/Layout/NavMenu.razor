@@ -22,18 +22,20 @@
             </div>
         }
         
-
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="rent">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Wypożyczanie
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="register">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Rejestracja
-            </NavLink>
-        </div>
+        @if (_auth?.User?.Claims?.Count() == 0)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="register">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Rejestracja
+                </NavLink>
+            </div>
+        }
     </nav>
 </div>
 
