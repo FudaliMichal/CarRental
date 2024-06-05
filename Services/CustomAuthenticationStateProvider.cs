@@ -8,7 +8,9 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {
     private readonly ProtectedSessionStorage _sessionStorage;
     private ClaimsPrincipal _anonymous = new ClaimsPrincipal(new ClaimsIdentity());
+    public const string EmployeeStateClaim = nameof(EmployeeStateClaim); 
 
+    
     public CustomAuthenticationStateProvider(ProtectedSessionStorage sessionStorage)
     {
         _sessionStorage = sessionStorage;
@@ -29,7 +31,8 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
             var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
                 new Claim(ClaimTypes.Name, userSession.Login),
-                new Claim(ClaimTypes.NameIdentifier, userSession.IdKontoUzytkownika.ToString())
+                new Claim(ClaimTypes.NameIdentifier, userSession.IdKontoUzytkownika.ToString()),
+                new Claim(EmployeeStateClaim, userSession.CzyPracownik.ToString())
             }, "CustomAuth"));
 
             return await Task.FromResult(new AuthenticationState(claimsPrincipal));
@@ -46,7 +49,8 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
         {
             new Claim(ClaimTypes.Name, userSession.Login),
-            new Claim(ClaimTypes.NameIdentifier, userSession.IdKontoUzytkownika.ToString())
+            new Claim(ClaimTypes.NameIdentifier, userSession.IdKontoUzytkownika.ToString()),
+            new Claim(EmployeeStateClaim, userSession.CzyPracownik.ToString())
         }, "CustomAuth"));
 
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrincipal)));
@@ -56,5 +60,13 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         await _sessionStorage.DeleteAsync("UserSession");
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(_anonymous)));
+    }
+}
+
+public static class ClaimExtension
+{
+    public static string? ReturnClaimState(this ClaimsPrincipal user, string claimName)
+    {
+        return user.Claims.FirstOrDefault(x => x.Type == claimName)?.Value;
     }
 }

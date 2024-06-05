@@ -1,6 +1,5 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
-@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject CustomAuthenticationStateProvider CustomAuthStateProvider
 
 <div class="page">
@@ -19,7 +18,6 @@
             {
                 <p>Nie jesteś zalogowany!</p>
             }
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
 
         <article class="content px-4">
@@ -39,7 +37,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        authenticationState = await CustomAuthStateProvider.GetAuthenticationStateAsync();
+        CustomAuthStateProvider.AuthenticationStateChanged += _ => StateHasChanged();
     }
 
     private async Task Logout()

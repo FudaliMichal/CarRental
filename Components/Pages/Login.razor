@@ -46,7 +46,7 @@
             {
                 await connection.OpenAsync();
 
-                var query = $"SELECT IdKontoUzytkownika, Login FROM KontoUzytkownika WHERE Login = '{loginModel.Login}' AND Haslo = '{loginModel.Haslo}'";
+                var query = $"SELECT IdKontoUzytkownika, Login, CzyPracownik FROM KontoUzytkownika WHERE Login = '{loginModel.Login}' AND Haslo = '{loginModel.Haslo}'";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     using (var reader = await command.ExecuteReaderAsync())
@@ -57,7 +57,7 @@
                                 {
                                     IdKontoUzytkownika = reader.GetInt32("IdKontoUzytkownika"),
                                     Login = reader.GetString("Login"),
-                                    
+                                    CzyPracownik = reader.GetBoolean("CzyPracownik")
                                 };
 
                             await AuthenticationStateProvider.LoginAsync(userSession);

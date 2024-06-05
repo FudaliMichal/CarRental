@@ -1,7 +1,11 @@
 ﻿@page "/"
 
+@using Microsoft.AspNetCore.Components.Authorization
+@inject CustomAuthenticationStateProvider CustomAuthStateProvider
+
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
+        
         <div class="col-md-3 mb-4 d-flex justify-content-center">
             <a href="/login" class="d-block text-center button-style fixed-width rounded py-5">
                 <div class="photo mb-2">
@@ -10,6 +14,7 @@
                 <h5 class="button-text">Zaloguj</h5>
             </a>
         </div>
+
         <div class="col-md-3 mb-4 d-flex justify-content-center">
             <a href="/register" class="d-block text-center button-style fixed-width rounded py-5">
                 <div class="photo mb-2">
@@ -18,6 +23,7 @@
                 <h5 class="button-text">Rejestracja</h5>
             </a>
         </div>
+
         <div class="col-md-3 mb-4 d-flex justify-content-center">
             <a href="/rent" class="d-block text-center button-style fixed-width rounded py-5">
                 <div class="photo mb-2">
@@ -26,6 +32,8 @@
                 <h5 class="button-text">Wypożyczanie</h5>
             </a>
         </div>
+
+
         <div class="col-md-3 mb-4 d-flex justify-content-center">
             <a href="/reservations" class="d-block text-center button-style fixed-width rounded py-5">
                 <div class="photo mb-2">
@@ -38,5 +46,13 @@
 </div>
 
 @code {
-    // Your C# code here if needed
+    // private AuthenticationState _auth;
+    // private bool _isUserEmployee;
+    //
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     _auth = await CustomAuthStateProvider.GetAuthenticationStateAsync();
+    //     var employeeState = _auth.User.ReturnClaimState(CustomAuthenticationStateProvider.EmployeeStateClaim);
+    //     _isUserEmployee = employeeState is not null && bool.Parse(employeeState);
+    // }
 }

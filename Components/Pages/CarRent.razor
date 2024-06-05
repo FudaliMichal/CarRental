@@ -1,20 +1,25 @@
 @page "/rent"
 @using CarRental.Models
+@using Microsoft.AspNetCore.Components.Authorization
 @using MySqlConnector
 @rendermode InteractiveServer
 @inject IConfiguration Configuration
 @inject NavigationManager Navigation
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
 
 <PageTitle>Car Renting</PageTitle>
 
 <h1>
     Wynajmij auto:
-    <Button Color="ButtonColor.Success" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
+
+    @if (_isUserEmployee)
+    {
+        <Button Color="ButtonColor.Success" Size="Size.Small" @onclick="OnShowModalClick"> Dodaj samochód </Button>
+    }
 </h1>
 
 
 <p>
-    Segment samochodu
     <Dropdown>
         <DropdownToggleButton Color="ButtonColor.Secondary">@Rodzajdropdowntext</DropdownToggleButton>
         <DropdownMenu>
@@ -24,10 +29,7 @@
             }
         </DropdownMenu>
     </Dropdown>
-</p>
 
-<p>
-    Ilość miejsc
     <Dropdown>
         <DropdownToggleButton Color="ButtonColor.Secondary">@Miejscadropdowntext</DropdownToggleButton>
         <DropdownMenu>
@@ -37,10 +39,7 @@
             }
         </DropdownMenu>
     </Dropdown>
-</p>
 
-<p>
-    Rodzaj paliwa
     <Dropdown>
         <DropdownToggleButton Color="ButtonColor.Secondary">@Paliwodropdowntext</DropdownToggleButton>
         <DropdownMenu>
@@ -68,16 +67,22 @@
             <div class="text">Możliwość najmu od: @car.KoniecNajmu</div>
             
             <div class="bottombutton">
-                <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowRentModalClick(car)"> Rezerwuj </Button>
-                <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
                 
-                @* @if() *@
-                <p>
-                    <Button Color="ButtonColor.Danger" Size="Size.Small" @onclick="() => DelCar(car)"> Usuń </Button>
-                </p>
+                @if (_auth.User.Claims.Count() != 0)
+                {
+                    <Button Color="ButtonColor.Primary" Size="Size.Small" style="margin-right: 10px" @onclick="() => OnShowRentModalClick(car)"> Rezerwuj </Button>
+                }
+                <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="() => OnShowOffcanvasClick(car)"> Szczegóły </Button>
+
+                @if (_isUserEmployee)
+                {
+                    <p>
+                        <Button Color="ButtonColor.Danger" Size="Size.Small" style="margin-top: 5px" @onclick="() => DelCar(car)"> Usuń </Button>
+                    </p>
+                }
             </div>
         </div>
-        }
+    }
 </div>
 
 <Offcanvas @ref="_offcanvas">
@@ -167,9 +172,12 @@
 
 @code
 {
-    private string Rodzajdropdowntext => _filterrodzajauta == string.Empty ? "Wybierz typ samochodu" : _filterrodzajauta;
-    private string Miejscadropdowntext => _filteriloscmiejsc is null ? "Wybierz ilość miejsc" : _filteriloscmiejsc.ToString();
-    private string Paliwodropdowntext => _filterpaliwo is null ? "Wybierz rodzaj paliwa" : ((Paliwo)_filterpaliwo).ToString();
+    private AuthenticationState _auth;
+    private bool _isUserEmployee;
+    
+    private string Rodzajdropdowntext => _filterrodzajauta == string.Empty ? "Typ samochodu" : _filterrodzajauta;
+    private string Miejscadropdowntext => _filteriloscmiejsc is null ? "Ilość miejsc" : _filteriloscmiejsc.ToString();
+    private string Paliwodropdowntext => _filterpaliwo is null ? "Rodzaj paliwa" : ((Paliwo)_filterpaliwo).ToString();
     private List<int> _listamiejsc = [];
     private List<string> _listatypow = [];
     
@@ -231,6 +239,10 @@
     {
         await ReadAllFromDb();
         _filteredlist.AddRange(_carlist);
+        
+        _auth = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var employeeState = _auth.User.ReturnClaimState(CustomAuthenticationStateProvider.EmployeeStateClaim);
+        _isUserEmployee = employeeState is not null && bool.Parse(employeeState);
     }
 
     private async Task ReadAllFromDb()
