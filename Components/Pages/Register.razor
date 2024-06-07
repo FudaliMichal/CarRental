@@ -249,7 +249,7 @@
 
                 if (newUser.CzyPracownik)
                 {
-                    var insertWorkerQuery = "INSERT INTO Pracownik (idKontoUzytkownika, Imie, Nazwisko, Mail, idAdres) VALUES (@idKontoUzytkownika, @imie, @nazwisko, @mail, @idAdres)";
+                    var insertWorkerQuery = "INSERT INTO Pracownik (idKontoUzytkownika, Imie, Nazwisko, Mail, idAdres, DaneUzu) VALUES (@idKontoUzytkownika, @imie, @nazwisko, @mail, @idAdres, @DaneU)";
                     using (var insertClientCommand = new MySqlCommand(insertWorkerQuery, connection))
                     {
                         insertClientCommand.Parameters.AddWithValue("@idKontoUzytkownika", _idKontoUzytkownika);
@@ -257,6 +257,8 @@
                         insertClientCommand.Parameters.AddWithValue("@nazwisko", _Nazwisko);
                         insertClientCommand.Parameters.AddWithValue("@mail", _Mail);
                         insertClientCommand.Parameters.AddWithValue("@idAdres", _idAdres);
+                        insertClientCommand.Parameters.AddWithValue("@DaneU", 0);
+
                         await insertClientCommand.ExecuteNonQueryAsync();
                     }
                 }

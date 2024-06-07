@@ -1,67 +1,67 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CarRental.bundle.scp.css",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CarRental.bundle.scp.css",
       "PackagePath": "staticwebassets\\CarRental.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\hondacivic10.jpg",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\hondacivic10.jpg",
       "PackagePath": "staticwebassets\\CarImages\\hondacivic10.jpg"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\mustang.jpg",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\mustang.jpg",
       "PackagePath": "staticwebassets\\CarImages\\mustang.jpg"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\porsche911.webp",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\porsche911.webp",
       "PackagePath": "staticwebassets\\CarImages\\porsche911.webp"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\superb.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\superb.png",
       "PackagePath": "staticwebassets\\CarImages\\superb.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\supra.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\supra.png",
       "PackagePath": "staticwebassets\\CarImages\\supra.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\tesla.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\tesla.png",
       "PackagePath": "staticwebassets\\CarImages\\tesla.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\CarImages\\touareg.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\CarImages\\touareg.png",
       "PackagePath": "staticwebassets\\CarImages\\touareg.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\Icons\\caricon.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\Icons\\caricon.png",
       "PackagePath": "staticwebassets\\Icons\\caricon.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\Icons\\listicon.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\Icons\\listicon.png",
       "PackagePath": "staticwebassets\\Icons\\listicon.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\Icons\\loginicon.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\Icons\\loginicon.png",
       "PackagePath": "staticwebassets\\Icons\\loginicon.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\Icons\\registericon.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\Icons\\registericon.png",
       "PackagePath": "staticwebassets\\Icons\\registericon.png"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\app.css",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Michal\\Desktop\\CarRental\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\John\\RiderProjects\\CarRental\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {

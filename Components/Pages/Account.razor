@@ -15,7 +15,7 @@
     
     <p>Podaj numer PESEL:</p>
     <p>
-        <InputNumber TValue="int?" ValueExpression="() => _PESEL" ValueChanged="(value) => _PESEL = value"></InputNumber>
+        <InputNumber TValue="int" ValueExpression="() => _PESEL" ValueChanged="(value) => _PESEL = value"></InputNumber>
     </p>
     
     <p>Nazwa stanowiska:</p>
@@ -45,9 +45,9 @@
     private bool _isUserEmployee;
     private List<string> _userinfo= [];
     private int _idKU;
-    private bool dataFilled = false;
-    private int? _PESEL = null;
-    private string? _stanowisko = string.Empty;
+    private bool dataFilled;
+    private int _PESEL;
+    private string _stanowisko = string.Empty;
     
     protected override async Task OnInitializedAsync()
     {
@@ -165,7 +165,7 @@
 
                 if (_isUserEmployee)
                 {
-                    var workerquery = "SELECT idPracownik, Pesel, Stanowisko FROM Pracownik WHERE idKontoUzytkownika = @idKU";
+                    var workerquery = "SELECT idPracownik, Pesel, Stanowisko, DaneUzu FROM Pracownik WHERE idKontoUzytkownika = @idKU";
                     using (var selectworkerIdCommand = new MySqlCommand(workerquery, connection))
                     {
                         selectworkerIdCommand.Parameters.AddWithValue("@idKU", _idKU);
@@ -176,14 +176,7 @@
                                 _userinfo.Add("ID pracownika: " + reader.GetInt32("idPracownik").ToString());
                                 _userinfo.Add("Nr PESEL: " + reader.GetInt32("Pesel").ToString());
                                 _userinfo.Add("Stanowisko: " + reader.GetString("Stanowisko"));
-
-                                _PESEL = reader.GetInt32("Pesel");
-                                _stanowisko = reader.GetString("Stanowisko");
-
-                                if (_stanowisko != string.Empty || _PESEL != null)
-                                {
-                                    dataFilled = true;
-                                }
+                                dataFilled = reader.GetBoolean("DaneUzu");
                             }
                         }
                     }
@@ -207,13 +200,15 @@
             {
                 await connection.OpenAsync();
                 
-                var updateworker = $"UPDATE Pracownik SET Pesel = @pesel, Stanowisko = @stanowisko WHERE idKontoUzytkownika = @idKU";
+                var updateworker = $"UPDATE Pracownik SET Pesel = @pesel, Stanowisko = @stanowisko , DaneUzu = @DaneU WHERE idKontoUzytkownika = @idKU";
 
                 using (var command = new MySqlCommand(updateworker, connection))
                 {
                     command.Parameters.AddWithValue("@pesel", _PESEL);
                     command.Parameters.AddWithValue("@stanowisko", _stanowisko);
                     command.Parameters.AddWithValue("@idKU", _idKU);
+                    command.Parameters.AddWithValue("@DaneU", 1);
+
 
                     await command.ExecuteNonQueryAsync();
                 }

@@ -15,14 +15,14 @@
 <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
     <ValidationSummary />
 
+    <label for="username">Nazwa użytkownika:</label>
     <p>
-        <label for="username">Nazwa użytkownika:</label>
         <InputText id="username" @bind-Value="loginModel.Login" />
         <ValidationMessage For="@(() => loginModel.Login)" />
     </p>
 
+    <label for="password">Hasło:</label>
     <p>
-        <label for="password">Hasło:</label>
         <InputText id="password" type="password" @bind-Value="loginModel.Haslo" />
         <ValidationMessage For="@(() => loginModel.Haslo)" />
     </p>
