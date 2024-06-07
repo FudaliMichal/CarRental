@@ -1,8 +1,243 @@
 ﻿@page "/reservations"
+@using System.Security.Claims
+@using CarRental.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using MySqlConnector
+@inject IConfiguration Configuration
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
 
-<PageTitle>Zarezerwuj samochód</PageTitle>
+<PageTitle>Moje Rezerwacje</PageTitle>
 
+<h1>Moje rezerwacje</h1>
 
-@code{
+@if (_reservations.Count == 0)
+{
+    <p>Nie masz żadnych rezerwacji.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Samochód</th>
+                    <th>Data Od</th>
+                    <th>Data Do</th>
+                    <th>Liczba Dni</th>
+                    <th>Cena (zł)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservation in _reservations)
+                {
+                    <tr>
+                        <td>@reservation.CarInfo</td>
+                        <td>@reservation.DataOd</td>
+                        <td>@reservation.DataDo</td>
+                        <td>@reservation.LiczbaDni</td>
+                        <td>@reservation.Cena</td>
+                        <td>
+                            @((RentStatus)reservation.Status)
+                            
+                            @if (reservation.Status == 0)
+                            {
+                                <Button Color="ButtonColor.Secondary" Size="Size.Small" style="margin-left: 10px" @onclick="() => OnShowModalClick(reservation)"> Opłać </Button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<Modal @ref="_modal" Title="@_modalTitle">
+    <BodyTemplate>
+        
+        <p>Do zapłaty: @_myres.Cena zł</p>
+        
+        Wprowadź kod BLIK:
+        <p>
+            <InputNumber TValue="int" ValueExpression="() => _kodblik" ValueChanged="(value) => _kodblik = value"></InputNumber>
+        </p>
+        
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+        <p style="color: red;">@errorMessage</p>
+        }
+
+    </BodyTemplate>
+
+    <FooterTemplate>
+        <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Anuluj</Button>
+        <Button Color="ButtonColor.Primary" @onclick="() => DBUpdateStatus(_myres)">Potwierdź płatność</Button>
+    </FooterTemplate>
+</Modal>
+
+@code {
+    private List<UserReservation> _reservations = new ();
+    private Modal _modal = default!;
+    private string _modalTitle = string.Empty;
+    private string errorMessage = string.Empty;
+    private int _kodblik;
+    private UserReservation _myres;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUserReservations();
+    }
+
+    private async Task LoadUserReservations()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = user?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(userId) && int.TryParse(userId, out var parsedUserId))
+        {
+            var clientId = await GetClientIdByUserId(parsedUserId);
+            if (clientId.HasValue)
+            {
+                await GetReservationsByClientId(clientId.Value);
+            }
+        }
+    }
+
+    private async Task<int?> GetClientIdByUserId(int userId)
+    {
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection");
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var query = "SELECT idKlient FROM Klient WHERE idKontoUzytkownika = @userId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@userId", userId);
+
+                    var result = await command.ExecuteScalarAsync();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas pobierania ID klienta: {ex.Message}");
+        }
+
+        return null;
+    }
+
+    private async Task GetReservationsByClientId(int clientId)
+    {
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection");
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var query = "SELECT W.*, S.Marka, S.Model FROM Wypozyczenia W " +
+                                 "JOIN Samochod S ON W.idSamochod = S.idSamochod " +
+                                 "WHERE W.idKlient = @clientId";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@clientId", clientId);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var dataOdStr = reader.GetString("DataOd");
+                            var dataDoStr = reader.GetString("DataDo");
+
+                            _reservations.Add(new UserReservation
+                            {
+                                IdWypozyczenia = reader.GetInt32("IdWypozyczenia"),
+                                IdKlient = reader.GetInt32("IdKlient"),
+                                IdSamochod = reader.GetInt32("IdSamochod"),
+                                DataOd = dataOdStr,
+                                DataDo = dataDoStr,
+                                LiczbaDni = reader.GetInt32("LiczbaDni"),
+                                Cena = reader.GetInt32("Cena"),
+                                CarInfo = $"{reader.GetString("Marka")} {reader.GetString("Model")}",
+                                Status = reader.GetInt32("status")
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas pobierania rezerwacji: {ex.Message}");
+        }
+    }
+
+    private class UserReservation : WypozyczeniaModel
+    {
+        public string CarInfo { get; set; }
+    }
+
+    private async Task OnShowModalClick(UserReservation res)
+    {
+        _modalTitle = "Opłać rezerwację: " + res.CarInfo;
+        _myres = res;
+        await _modal.ShowAsync();
+        
+    }
+    
+    private async Task OnHideModalClick()
+    {
+        await _modal.HideAsync();
+    }
+    
+    private async Task DBUpdateStatus(UserReservation res)
+    {
+        if (_kodblik.ToString().Length == 6)
+        {
+            errorMessage = string.Empty;
+            
+            res.Status = 1;
+
+            try
+            {
+                var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    var updatewyp = $"UPDATE Wypozyczenia SET status = @Status WHERE idWypozyczenia = @idWyp";
+
+                    using (var command = new MySqlCommand(updatewyp, connection))
+                    {
+                        command.Parameters.AddWithValue("@Status", res.Status);
+                        command.Parameters.AddWithValue("@idWyp", res.IdWypozyczenia);
+
+                        await command.ExecuteNonQueryAsync();
+                    }
+                }
+
+                _modal.HideAsync();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd podczas aktualizowania statusu: {ex.Message}");
+            }
+        }
+        else
+        {
+            errorMessage = "Niepoprawny kod BLIK";
+        }
+    }
     
 }

@@ -1,0 +1,231 @@
+@page "/account"
+@using System.Data
+@using Microsoft.AspNetCore.Components.Authorization
+@using MySqlConnector
+@using System.Security.Claims
+@using CarRental.Models
+@inject IConfiguration Configuration
+@inject NavigationManager Navigation
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
+
+<h1>Mój Profil</h1>
+
+@if (_isUserEmployee && dataFilled == false)
+{
+    
+    <p>Podaj numer PESEL:</p>
+    <p>
+        <InputNumber TValue="int?" ValueExpression="() => _PESEL" ValueChanged="(value) => _PESEL = value"></InputNumber>
+    </p>
+    
+    <p>Nazwa stanowiska:</p>
+    <p>
+        <InputText ValueExpression="() => _stanowisko" ValueChanged="(value) => _stanowisko = value"></InputText>
+    </p>
+    
+    <p>
+        <Button Color="ButtonColor.Primary" @onclick="AcceptEmployeeData">Potwierdź dane</Button>
+    </p>
+    
+    
+}
+
+<div>
+    @foreach (var info in _userinfo)
+    {
+        <p>@info</p>
+    }
+    
+
+</div>
+
+@code {
+    
+    private AuthenticationState _auth;
+    private bool _isUserEmployee;
+    private List<string> _userinfo= [];
+    private int _idKU;
+    private bool dataFilled = false;
+    private int? _PESEL = null;
+    private string? _stanowisko = string.Empty;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = user?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
+        _auth = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var employeeState = _auth.User.ReturnClaimState(CustomAuthenticationStateProvider.EmployeeStateClaim);
+        _isUserEmployee = employeeState is not null && bool.Parse(employeeState);
+
+        if (!string.IsNullOrEmpty(userId) && int.TryParse(userId, out var parsedUserId))
+        {
+            var clientId = await GetClientIdByUserId(parsedUserId);
+            if (clientId.HasValue)
+            {
+                await ReadUserInfo(clientId.Value);
+            }
+        }
+        
+    }
+
+    private async Task<int?> GetClientIdByUserId(int userId)
+    {
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection");
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var query = "SELECT idKlient FROM Klient WHERE idKontoUzytkownika = @userId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@userId", userId);
+
+                    var result = await command.ExecuteScalarAsync();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas pobierania ID klienta: {ex.Message}");
+        }
+
+        return null;
+    }
+    
+    private async Task ReadUserInfo(int id)
+    {
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                
+                var query = "SELECT idKlient, idKontoUzytkownika, idAdres, Imie, Nazwisko, Mail FROM Klient WHERE idKlient = @clientId";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@clientId", id);
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            var IdKlient = reader.GetInt32("idKlient").ToString();
+                            var IdKontoUzytkownika = reader.GetInt32("idKontoUzytkownika");
+                            var IdAdres = reader.GetInt32("idAdres").ToString();
+                            var Imie = reader.GetString("Imie");
+                            var Nazwisko = reader.GetString("Nazwisko");
+                            var Mail = reader.GetString("Mail");
+
+                            // Console.WriteLine(IdKlient);
+                            // Console.WriteLine(IdKontoUzytkownika);
+                            // Console.WriteLine(IdAdres);
+                            // Console.WriteLine(Imie);
+                            // Console.WriteLine(Nazwisko);
+                            // Console.WriteLine(Mail);
+                            
+                            // _userinfo.Add(IdKlient);
+                            // _userinfo.Add(IdKontoUzytkownika.ToString());
+                            // _userinfo.Add(IdAdres);
+                            _userinfo.Add("Imię: " + Imie);
+                            _userinfo.Add("Nazwisko: " + Nazwisko);
+                            _userinfo.Add("Adres e-mail: " + Mail);
+                            
+                            _idKU = IdKontoUzytkownika;
+
+                        }
+                    }
+                }
+                
+                var adresquery = "SELECT idAdres, Miasto, Ulica, Kraj, NrDomu, NrMieszkania FROM Adres WHERE idKontoUzytkownika = @idKU";
+                using (var selectAddressIdCommand = new MySqlCommand(adresquery, connection))
+                {
+                    selectAddressIdCommand.Parameters.AddWithValue("@idKU", _idKU);
+                    using (var reader = await selectAddressIdCommand.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            // _userinfo.Add(reader.GetInt32("idAdres").ToString());
+                            _userinfo.Add("Kraj: " + reader.GetString("Kraj"));
+                            _userinfo.Add("Miasto: " + reader.GetString("Miasto"));
+                            _userinfo.Add("Ulica: " + reader.GetString("Ulica"));
+                            _userinfo.Add("Nr Domu: " + reader.GetString("NrDomu"));
+                            _userinfo.Add("*Nr Mieszkania: " + reader.GetString("NrMieszkania"));
+                        }
+                    }
+                }
+
+                if (_isUserEmployee)
+                {
+                    var workerquery = "SELECT idPracownik, Pesel, Stanowisko FROM Pracownik WHERE idKontoUzytkownika = @idKU";
+                    using (var selectworkerIdCommand = new MySqlCommand(workerquery, connection))
+                    {
+                        selectworkerIdCommand.Parameters.AddWithValue("@idKU", _idKU);
+                        using (var reader = await selectworkerIdCommand.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                _userinfo.Add("ID pracownika: " + reader.GetInt32("idPracownik").ToString());
+                                _userinfo.Add("Nr PESEL: " + reader.GetInt32("Pesel").ToString());
+                                _userinfo.Add("Stanowisko: " + reader.GetString("Stanowisko"));
+
+                                _PESEL = reader.GetInt32("Pesel");
+                                _stanowisko = reader.GetString("Stanowisko");
+
+                                if (_stanowisko != string.Empty || _PESEL != null)
+                                {
+                                    dataFilled = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas odczytu danych: {ex.Message}");
+        }
+    }
+
+    private async Task AcceptEmployeeData()
+    {
+        
+        try
+        {
+            var connectionString = Configuration.GetConnectionString("MySqlConnection1");
+            
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                
+                var updateworker = $"UPDATE Pracownik SET Pesel = @pesel, Stanowisko = @stanowisko WHERE idKontoUzytkownika = @idKU";
+
+                using (var command = new MySqlCommand(updateworker, connection))
+                {
+                    command.Parameters.AddWithValue("@pesel", _PESEL);
+                    command.Parameters.AddWithValue("@stanowisko", _stanowisko);
+                    command.Parameters.AddWithValue("@idKU", _idKU);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wystąpił błąd podczas aktualizowania statusu: {ex.Message}");
+        }
+        
+        dataFilled = true;
+    }
+
+}

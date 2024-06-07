@@ -19,7 +19,7 @@ public class SamochodModel
 
 public enum Paliwo
 {
-    Elektryczny = 0,
+    Elektryczny,
     Benzyna,
     Diesel
 }

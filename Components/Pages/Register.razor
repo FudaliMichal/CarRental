@@ -94,6 +94,7 @@
 @code {
     private int _idKontoUzytkownika;
     private int _idAdres;
+    private int _idKlient;
     
     private string _Login = string.Empty;
     private string _Haslo = string.Empty;
@@ -191,7 +192,7 @@
                 }
 
                 // Insert address
-                var insertAddressQuery = "INSERT INTO Adres (Miasto, Ulica, Kraj, NrDomu, NrMieszkania) VALUES (@miasto, @ulica, @kraj, @nrDomu, @nrMieszkania)";
+                var insertAddressQuery = "INSERT INTO Adres (Miasto, Ulica, Kraj, NrDomu, NrMieszkania, idKontoUzytkownika) VALUES (@miasto, @ulica, @kraj, @nrDomu, @nrMieszkania, @idKonto)";
                 using (var insertAddressCommand = new MySqlCommand(insertAddressQuery, connection))
                 {
                     insertAddressCommand.Parameters.AddWithValue("@miasto", _Miasto);
@@ -199,17 +200,15 @@
                     insertAddressCommand.Parameters.AddWithValue("@kraj", _Kraj);
                     insertAddressCommand.Parameters.AddWithValue("@nrDomu", _NrDomu);
                     insertAddressCommand.Parameters.AddWithValue("@nrMieszkania", _NrMieszkania);
+                    insertAddressCommand.Parameters.AddWithValue("@idKonto", _idKontoUzytkownika);
                     await insertAddressCommand.ExecuteNonQueryAsync();
                 }
 
                 // Retrieve the new address's ID
-                var selectAddressIdQuery = "SELECT idAdres FROM Adres WHERE Miasto = @miasto AND Ulica = @ulica AND Kraj = @kraj AND NrDomu = @nrDomu";
+                var selectAddressIdQuery = "SELECT idAdres FROM Adres WHERE idKontoUzytkownika = @idKonto";
                 using (var selectAddressIdCommand = new MySqlCommand(selectAddressIdQuery, connection))
                 {
-                    selectAddressIdCommand.Parameters.AddWithValue("@miasto", _Miasto);
-                    selectAddressIdCommand.Parameters.AddWithValue("@ulica", _Ulica);
-                    selectAddressIdCommand.Parameters.AddWithValue("@kraj", _Kraj);
-                    selectAddressIdCommand.Parameters.AddWithValue("@nrDomu", _NrDomu);
+                    selectAddressIdCommand.Parameters.AddWithValue("@idKonto", _idKontoUzytkownika);
                     using (var reader = await selectAddressIdCommand.ExecuteReaderAsync())
                     {
                         if (await reader.ReadAsync())
@@ -219,6 +218,7 @@
                         }
                     }
                 }
+                
 
                 // Insert client
                 var insertClientQuery = "INSERT INTO Klient (idKontoUzytkownika, Imie, Nazwisko, Mail, idAdres) VALUES (@idKontoUzytkownika, @imie, @nazwisko, @mail, @idAdres)";
@@ -230,6 +230,35 @@
                     insertClientCommand.Parameters.AddWithValue("@mail", _Mail);
                     insertClientCommand.Parameters.AddWithValue("@idAdres", _idAdres);
                     await insertClientCommand.ExecuteNonQueryAsync();
+                }
+                
+                // Retrieve the Klient ID
+                var selectKlientIdQuery = "SELECT idKlient FROM Klient WHERE idKontoUzytkownika = @idKonto";
+                using (var selectKlientIdCommand = new MySqlCommand(selectKlientIdQuery, connection))
+                {
+                    selectKlientIdCommand.Parameters.AddWithValue("@idKonto", _idKontoUzytkownika);
+                    using (var reader = await selectKlientIdCommand.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            _idKlient = reader.GetInt32("idKlient");
+                            Console.WriteLine($"Found idKlient: {_idKlient}");
+                        }
+                    }
+                }
+
+                if (newUser.CzyPracownik)
+                {
+                    var insertWorkerQuery = "INSERT INTO Pracownik (idKontoUzytkownika, Imie, Nazwisko, Mail, idAdres) VALUES (@idKontoUzytkownika, @imie, @nazwisko, @mail, @idAdres)";
+                    using (var insertClientCommand = new MySqlCommand(insertWorkerQuery, connection))
+                    {
+                        insertClientCommand.Parameters.AddWithValue("@idKontoUzytkownika", _idKontoUzytkownika);
+                        insertClientCommand.Parameters.AddWithValue("@imie", _Imie);
+                        insertClientCommand.Parameters.AddWithValue("@nazwisko", _Nazwisko);
+                        insertClientCommand.Parameters.AddWithValue("@mail", _Mail);
+                        insertClientCommand.Parameters.AddWithValue("@idAdres", _idAdres);
+                        await insertClientCommand.ExecuteNonQueryAsync();
+                    }
                 }
             }
 
