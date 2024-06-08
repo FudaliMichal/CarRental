@@ -9,4 +9,5 @@ public class PracownikModel
     public int PESEL { get; set; }
     public string Stanowisko { get; set; }
     public string EMail { get; set; }
+    public bool DaneUzu { get; set; }
 }
